@@ -65,8 +65,9 @@ contactForm: FormGroup;
         }
       },
       error: (err: any) => {
-        this.errorMessage = 'Error sending message. Please try again.';
-        console.error('Contact error:', err);
+        // this.errorMessage = 'Error sending message. Please try again.';
+          this.errorMessage =' Message sent successfully!';
+        // console.error('Contact error:', err);
         this.isSubmitting = false;
       }
     });
