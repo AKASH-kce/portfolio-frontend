@@ -1,0 +1,54 @@
+<section class="contact-section">
+  <h2 class="section-title">Get In Touch</h2>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" formControlName="name" placeholder="Your Name" required>
+      <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid" class="error-message">
+        Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="email" formControlName="email" placeholder="Your Email" required>
+      <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors as errors" class="error-message">
+        <span *ngIf="errors['required']">Email is required.</span>
+        <span *ngIf="errors['email']">Please enter a valid email address.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <textarea formControlName="message" placeholder="Your Message" rows="5" required></textarea>
+      <div *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid" class="error-message">
+        Message is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="file-upload" class="file-upload-label">
+        <i class="fas fa-file-upload"></i> 
+        <span>{{ selectedFile ? 'Selected: ' + selectedFile.name : 'Upload Resume (Optional)' }}</span>
+      </label>
+      <input id="file-upload" type="file" (change)="onFileSelected($event)" style="display: none;">
+      <div *ngIf="selectedFile" class="file-name">
+        {{ selectedFile.name }}
+      </div>
+    </div>
+    <div class="form-group" style="text-align: center; margin-top: 1.5rem;">
+      <button type="submit" class="cta-button" [disabled]="contactForm.invalid || isSubmitting">
+        <span *ngIf="!isSubmitting">Send Message</span>
+        <span *ngIf="isSubmitting">Sending...</span>
+      </button>
+    </div>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+  <!--
+  <button type="button" class="cta-button" (click)="downloadFile()" [disabled]="!lastContactId" style="margin-top: 1rem;">
+    Download Last Uploaded File
+  </button>
+  <div *ngIf="!lastContactId" class="info-message" style="margin-top: 0.5rem;">
+    Submit a message with a file to enable download.
+  </div>
+  -->
+</section>

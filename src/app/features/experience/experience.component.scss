@@ -1,0 +1,96 @@
+.experience-section {
+  padding: 5rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.9s, transform 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.experience-section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin: 5rem 0 3rem;
+  position: relative;
+}
+
+.timeline-items {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 48px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -24px;
+  top: 8px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border-radius: 50%;
+  border: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px 2px #e52e7144, 0 0 32px 8px #fff8;
+}
+
+.flower-dot {
+  filter: drop-shadow(0 0 8px #e52e71cc) drop-shadow(0 0 2px #fff8);
+  transition: transform 0.3s;
+}
+
+.timeline-dot:hover .flower-dot {
+  transform: scale(1.15) rotate(18deg);
+}
+
+.timeline-date {
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  padding-left: 8px;
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  animation: float 6s ease-in-out infinite;
+  padding-left: 8px;
+}
+
+.timeline-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.timeline-content p {
+  color: #fff;
+  margin-bottom: 0.3rem;
+} 

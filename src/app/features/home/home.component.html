@@ -1,0 +1,51 @@
+<section class="hero floating-hero hero-flex-row">
+    <div class="cube-profile-container">
+        <app-profile-card
+            [name]="'Akash S'"
+            [title]="'Product Engineer'"
+            [image]="'portfoliopic.JPG'"
+            [description]="'Product Engineer at ClaySys Technologies. Experienced in full-stack development, passionate about building modern web apps.'"
+            [socialLinks]="socialLinks"
+            class="animated-profile-card"
+            (comingSoon)="onSocialLinkClick($event.event, $event.link)"
+        ></app-profile-card>
+    </div>
+    <div class="hero-content animated-fadein">
+        <h1 class="animated-slidein">Hi, I'm <span>Akash S</span></h1>
+        <p class="animated-slidein-delay">Product Engineer at ClaySys Technologies. I create immersive digital experiences and scalable solutions with a passion for modern web development.</p>
+        <div class="hero-buttons">
+            <a routerLink="/projects" class="cta-button floating-btn animated-pop"><i class="fab fa-github"></i> View Projects</a>
+            <a routerLink="/contact" class="cta-button outline floating-btn animated-pop-delay"><i class="fas fa-paper-plane"></i> Contact Me</a>
+        </div>
+    </div>
+</section>
+<app-contact></app-contact>
+<app-experience></app-experience>
+<app-projects id="projects"></app-projects>
+<app-skills id="skills"></app-skills>
+
+<app-contact-popup
+  [open]="showComingSoonPopup"
+  [startX]="comingSoonPopupX"
+  [startY]="comingSoonPopupY"
+  (close)="closeComingSoonPopup()"
+>
+  <div class="sphere-content">
+    <h2 class="popup-title">Coming Soon</h2>
+    <p class="popup-info">This feature will be available soon!</p>
+  </div>
+</app-contact-popup>
+
+<script>
+// 3D cube mousemove animation
+window.addEventListener('DOMContentLoaded', () => {
+    const cube = document.getElementById('cube3d');
+    if (cube) {
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 25;
+            const y = (window.innerHeight / 2 - e.clientY) / 25;
+            cube.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+        });
+    }
+});
+</script>

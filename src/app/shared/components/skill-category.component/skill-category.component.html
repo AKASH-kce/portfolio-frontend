@@ -1,0 +1,12 @@
+<div class="skill-category">
+  <h3><i class="fas" [ngClass]="category.icon"></i> {{ category.name }}</h3>
+  <div class="skill-list">
+    <div class="skill-item" *ngFor="let skill of category.skills">
+      <i class="fab" [ngClass]="skill.icon"></i>
+      <div>
+        <strong>{{ skill.name }}</strong>
+        <div class="skill-level">{{ skill.level }}</div>
+      </div>
+    </div>
+  </div>
+</div>

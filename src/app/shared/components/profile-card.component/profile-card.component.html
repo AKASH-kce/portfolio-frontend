@@ -1,0 +1,21 @@
+<div class="profile-card" (click)="flipCard()" [ngClass]="{flipped: isFlipped}">
+    <div class="front">
+        <img [src]="image" alt="Akash S">
+        <h3>{{ name }}</h3>
+        <p>{{ title }}</p>
+    </div>
+    <div class="back">
+        <div class="social-links">
+            <a *ngFor="let link of socialLinks"
+               [href]="link.url"
+               target="_blank"
+               [attr.rel]="link.url ? 'noopener' : null"
+               (click)="link.comingSoon ? comingSoon.emit({link: link, event: $event}) : null"
+            >
+                <i [class]="link.icon"></i>
+            </a>
+        </div>
+        <p>Product Engineer at ClaySys Technologies. Experienced in full-stack development, passionate about building modern web apps.</p>
+        <a href="mailto:akashkce123@gmail.com" class="cta-button"><i class="fas fa-envelope"></i> Email Me</a>
+    </div>
+</div>

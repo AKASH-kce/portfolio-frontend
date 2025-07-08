@@ -1,0 +1,173 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-name {
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 1.3rem;
+    display: inline-block;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid var(--accent);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+nav a:focus, nav a:active {
+    color: #fff;
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  margin-left: 1rem;
+}
+.menu-icon span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+  header {
+    flex-direction: row;
+    padding: 1rem 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .logo {
+    flex: 1 1 auto;
+  }
+  .menu-icon {
+    display: flex;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+  }
+  nav ul {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    flex-direction: column;
+    gap: 0;
+    width: 180px;
+    padding: 1rem 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+    z-index: 150;
+  }
+  nav ul.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  nav li {
+    margin: 0.5rem 0;
+    text-align: right;
+  }
+  nav a {
+    font-size: 1.1rem;
+    padding: 0.7rem 0.5rem;
+    display: block;
+  }
+  .logo-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo span {
+    font-size: 1.1rem;
+  }
+  nav ul {
+    width: 98vw;
+    right: 1vw;
+    top: 60px;
+    padding: 0.7rem 0.2rem;
+  }
+  .logo-name {
+    font-size: 0.95rem;
+  }
+}

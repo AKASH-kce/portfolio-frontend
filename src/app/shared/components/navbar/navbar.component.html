@@ -1,0 +1,24 @@
+<header>
+    <div class="logo">
+        <img src="portfoliopic.JPG" alt="Akash S">
+        <span class="logo-name">Akash</span>
+    </div>
+    <button class="menu-icon" (click)="toggleMenu()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+        <ul [class.open]="isMenuOpen">
+            <li><a routerLink="/" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-home"></i> Home</a></li>
+            <li><a routerLink="/about" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-user"></i> About</a></li>
+            <li><a routerLink="projects" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-code"></i> Projects</a></li>
+            <li><a routerLink="skills" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-cogs"></i> Skills</a></li>
+            <li><a routerLink="/experience" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-briefcase"></i> Experience</a></li>
+            <li><a routerLink="/resume" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-file-alt"></i> Resume</a></li>
+            <li><a routerLink="/testimonials" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-comment-dots"></i> Testimonials</a></li>
+            <li><a routerLink="/gallery" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a routerLink="/contact" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+</header>

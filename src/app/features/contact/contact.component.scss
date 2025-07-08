@@ -1,0 +1,187 @@
+/* Add to global styles.css */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+.error-message {
+  color: #ff2a6d;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.success-message {
+  color: #00c9ff;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(45deg, #8a2be2, #ff2a6d);
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(229, 46, 113, 0.3);
+}
+
+#file-upload {
+  display: none;
+}
+
+.file-name {
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.contact-section {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #232526 0%, #302b63 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  max-width: 420px;
+  width: 100%;
+  margin: 2rem auto;
+  border: 1px solid rgba(255,255,255,0.13);
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 1.1rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 1.08rem;
+  margin-top: 0.3rem;
+  transition: border 0.2s;
+}
+
+input:focus, textarea:focus {
+  border: 1.5px solid #e52e71;
+  outline: none;
+}
+
+.file-upload-label {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #8a2be2, #ff2a6d);
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.08rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(229, 46, 113, 0.13);
+}
+.file-upload-label:hover {
+  background: linear-gradient(45deg, #ff2a6d, #8a2be2);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.file-name {
+  margin-top: 0.5rem;
+  color: #e0e0e0;
+  font-size: 0.98rem;
+  text-align: left;
+}
+
+.cta-button {
+  width: 100%;
+  padding: 1.2rem 0;
+  font-size: 1.18rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #e52e71 0%, #ff8a00 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(229, 46, 113, 0.13);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+}
+.cta-button:disabled {
+  background: #bdbdbd;
+  color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.cta-button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #ff8a00 0%, #e52e71 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.success-message, .error-message {
+  margin-top: 1.2rem;
+  text-align: center;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+.success-message {
+  color: #00ffaa;
+}
+.error-message {
+  color: #ff2a6d;
+}
+
+@media (max-width: 600px) {
+  .contact-card {
+    padding: 1.2rem 0.5rem;
+    max-width: 99vw;
+  }
+  .contact-section {
+    padding: 0.5rem;
+    min-height: 100vh;
+  }
+  .cta-button {
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+}
+
+.contact-section .section-title {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+}
