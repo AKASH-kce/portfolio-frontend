@@ -1,0 +1,1 @@
+import{Aa as o,Oa as a,Pa as n,Za as s}from"./chunk-LJK24X6Q.js";var i=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=o({type:t,selectors:[["app-about"]],decls:2,vars:0,template:function(e,r){e&1&&(a(0,"p"),s(1,"about works!"),n())},encapsulation:2})};export{i as About};

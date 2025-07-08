@@ -1,0 +1,1 @@
+import{Aa as a,Oa as l,Pa as n,Za as r}from"./chunk-LJK24X6Q.js";var o=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=a({type:t,selectors:[["app-gallery"]],decls:2,vars:0,template:function(e,i){e&1&&(l(0,"p"),r(1,"gallery works!"),n())},encapsulation:2})};export{o as Gallery};

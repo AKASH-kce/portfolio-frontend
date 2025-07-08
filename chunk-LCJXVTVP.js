@@ -1,0 +1,1 @@
+import{Aa as s,Oa as i,Pa as n,Za as a}from"./chunk-LJK24X6Q.js";var o=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=s({type:t,selectors:[["app-testimonials"]],decls:2,vars:0,template:function(e,l){e&1&&(i(0,"p"),a(1,"testimonials works!"),n())},encapsulation:2})};export{o as Testimonials};

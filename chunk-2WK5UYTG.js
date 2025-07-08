@@ -1,1 +1,0 @@
-import{Aa as n,Oa as s,Pa as o,Za as m}from"./chunk-LJK24X6Q.js";var a=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-resume"]],decls:2,vars:0,template:function(e,p){e&1&&(s(0,"p"),m(1,"resume works!"),o())},encapsulation:2})};export{a as Resume};
