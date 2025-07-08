@@ -33,7 +33,7 @@
             "styles": [
               "src/styles.scss"
             ],
-             "baseHref": "/akash-portfolio/"
+             "baseHref": "/portfolio-frontend/"
           },
           "configurations": {
             "production": {
