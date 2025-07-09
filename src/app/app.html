@@ -1,3 +1,4 @@
+<div class="bubble-bg"></div>
 <div id="particles-js"></div>
 <app-contact-bubble (showPopup)="openContactPopup($event)"></app-contact-bubble>
 <app-contact-popup [open]="showContactPopup" [startX]="popupStartX" [startY]="popupStartY" (close)="closeContactPopup()"></app-contact-popup>
@@ -6,6 +7,7 @@
     <router-outlet></router-outlet>
     <app-footer></app-footer>
 </div>
+<app-coming-soon-bubble [show]="showBubble" [message]="bubbleMessage"></app-coming-soon-bubble>
 <div class="global-wave-container">
   <svg class="global-wave-svg" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path class="global-wave-path" d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#e52e71" fill-opacity="0.18"/>

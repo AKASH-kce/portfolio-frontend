@@ -1,4 +1,4 @@
-<section class="hero floating-hero hero-flex-row">
+<section class="hero floating-hero hero-flex-row" id="home">
     <div class="cube-profile-container">
         <app-profile-card
             [name]="'Akash S'"
@@ -19,22 +19,10 @@
         </div>
     </div>
 </section>
-<app-contact></app-contact>
-<app-experience></app-experience>
+<app-experience id="experience"></app-experience>
+<app-contact id="contact"></app-contact>
 <app-projects id="projects"></app-projects>
 <app-skills id="skills"></app-skills>
-
-<app-contact-popup
-  [open]="showComingSoonPopup"
-  [startX]="comingSoonPopupX"
-  [startY]="comingSoonPopupY"
-  (close)="closeComingSoonPopup()"
->
-  <div class="sphere-content">
-    <h2 class="popup-title">Coming Soon</h2>
-    <p class="popup-info">This feature will be available soon!</p>
-  </div>
-</app-contact-popup>
 
 <script>
 // 3D cube mousemove animation

@@ -5,17 +5,17 @@ import { ProjectsComponent } from '../projects/projects.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { ContactPopupComponent } from '../../shared/components/contact-popup.component';
 import { Contact } from '../contact/contact.component';
+import { ComingSoonBubbleComponent } from '../../shared/components/coming-soon-bubble.component/coming-soon-bubble.component';
 
 @Component({
   selector: 'app-home',
-  imports: [SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, ContactPopupComponent,Contact],
+  imports: [SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, Contact],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  showComingSoonPopup = false;
-  comingSoonPopupX = 0;
-  comingSoonPopupY = 0;
+  showBubble = false;
+  bubbleMessage = '';
 
   socialLinks: SocialLink[] = [
     { icon: 'fab fa-github', url: 'https://github.com/AKASH-kce' },
@@ -28,13 +28,13 @@ export class HomeComponent {
   onSocialLinkClick(event: MouseEvent, link: any) {
     if (link.comingSoon) {
       event.preventDefault();
-      this.comingSoonPopupX = event.clientX;
-      this.comingSoonPopupY = event.clientY;
-      this.showComingSoonPopup = true;
+      this.showBubbleWithMessage('Coming Soon');
     }
   }
 
-  closeComingSoonPopup() {
-    this.showComingSoonPopup = false;
+  showBubbleWithMessage(message: string) {
+    this.bubbleMessage = message;
+    this.showBubble = true;
+    setTimeout(() => this.showBubble = false, 2000);
   }
 }

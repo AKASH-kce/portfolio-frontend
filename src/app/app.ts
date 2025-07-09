@@ -5,21 +5,39 @@ import { Footer } from './shared/components/footer/footer.component';
 import { ContactBubbleComponent } from './shared/components/contact-bubble.component';
 import { ContactPopupComponent } from './shared/components/contact-popup.component';
 import { HttpClient } from '@angular/common/http';
+import { ComingSoonBubbleComponent } from './shared/components/coming-soon-bubble.component/coming-soon-bubble.component';
+import { BubbleService } from './core/services/bubble.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, Footer, ContactBubbleComponent, ContactPopupComponent],
+  imports: [RouterOutlet, NavbarComponent, Footer, ContactBubbleComponent, ContactPopupComponent,ComingSoonBubbleComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class AppComponent implements AfterViewInit, OnInit {
-  constructor(private renderer: Renderer2, private el: ElementRef, private http: HttpClient) {}
+  constructor(
+    private renderer: Renderer2,
+    private el: ElementRef,
+    private http: HttpClient,
+    private bubbleService: BubbleService
+  ) {
+    this.bubbleService.bubble$.subscribe(message => this.showBubbleWithMessage(message));
+  }
 
   protected title = 'portfolio-client-app';
   showContactPopup = false;
   popupStartX = 0;
   popupStartY = 0;
+
+  showBubble = false;
+  bubbleMessage = '';
+
+  showBubbleWithMessage(message: string) {
+    this.bubbleMessage = message;
+    this.showBubble = true;
+    setTimeout(() => this.showBubble = false, 2000);
+  }
 
   async ngAfterViewInit() {
     const script = this.renderer.createElement('script');
@@ -74,6 +92,22 @@ export class AppComponent implements AfterViewInit, OnInit {
         card.style.animationDelay = `${index * 0.2}s`;
       });
     }, 0);
+
+    // Animated bubbles background
+    const bubbleBg = document.querySelector('.bubble-bg');
+    if (bubbleBg) {
+      for (let i = 0; i < 18; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = Math.random() * 60 + 40; // 40-100px
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.animationDuration = `${12 + Math.random() * 10}s`;
+        bubble.style.animationDelay = `${Math.random() * 10}s`;
+        bubbleBg.appendChild(bubble);
+      }
+    }
 
     // Global wave splash effect
     const globalWave = document.querySelector('.global-wave-container') as HTMLElement;

@@ -1,8 +1,9 @@
 <header>
-    <div class="logo">
+    <!-- <div class="logo">
         <img src="portfoliopic.JPG" alt="Akash S">
         <span class="logo-name">Akash</span>
-    </div>
+    </div> -->
+    <app-theme-toggle></app-theme-toggle>
     <button class="menu-icon" (click)="toggleMenu()" aria-label="Toggle menu">
       <span></span>
       <span></span>
@@ -10,15 +11,62 @@
     </button>
     <nav>
         <ul [class.open]="isMenuOpen">
-            <li><a routerLink="/" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-home"></i> Home</a></li>
-            <li><a routerLink="/about" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-user"></i> About</a></li>
-            <li><a routerLink="projects" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-code"></i> Projects</a></li>
-            <li><a routerLink="skills" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-cogs"></i> Skills</a></li>
-            <li><a routerLink="/experience" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-briefcase"></i> Experience</a></li>
-            <li><a routerLink="/resume" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-file-alt"></i> Resume</a></li>
-            <li><a routerLink="/testimonials" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-comment-dots"></i> Testimonials</a></li>
-            <li><a routerLink="/gallery" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-images"></i> Gallery</a></li>
-            <li><a routerLink="/contact" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li>
+              <a *ngIf="implementedSections.includes('home'); else comingSoonHome" href="#home" (click)="scrollToSection($event, 'home')"><i class="fas fa-home"></i> Home</a>
+              <ng-template #comingSoonHome>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-home"></i> Home</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedSections.includes('about'); else comingSoonAbout" href="#about" (click)="scrollToSection($event, 'about')"><i class="fas fa-user"></i> About</a>
+              <ng-template #comingSoonAbout>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-user"></i> About</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedSections.includes('projects'); else comingSoonProjects" href="#projects" (click)="scrollToSection($event, 'projects')"><i class="fas fa-code"></i> Projects</a>
+              <ng-template #comingSoonProjects>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-code"></i> Projects</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedSections.includes('skills'); else comingSoonSkills" href="#skills" (click)="scrollToSection($event, 'skills')"><i class="fas fa-cogs"></i> Skills</a>
+              <ng-template #comingSoonSkills>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-cogs"></i> Skills</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedSections.includes('experience'); else comingSoonExperience" href="#experience" (click)="scrollToSection($event, 'experience')"><i class="fas fa-briefcase"></i> Experience</a>
+              <ng-template #comingSoonExperience>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-briefcase"></i> Experience</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedRoutes.includes('resume'); else comingSoonResume" routerLink="/resume" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-file-alt"></i> Resume</a>
+              <ng-template #comingSoonResume>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-file-alt"></i> Resume</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedRoutes.includes('testimonials'); else comingSoonTestimonials" routerLink="/testimonials" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-comment-dots"></i> Testimonials</a>
+              <ng-template #comingSoonTestimonials>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-comment-dots"></i> Testimonials</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedRoutes.includes('gallery'); else comingSoonGallery" routerLink="/gallery" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-images"></i> Gallery</a>
+              <ng-template #comingSoonGallery>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-images"></i> Gallery</a>
+              </ng-template>
+            </li>
+            <li>
+              <a *ngIf="implementedSections.includes('contact'); else comingSoonContact" href="#contact" (click)="scrollToSection($event, 'contact')"><i class="fas fa-envelope"></i> Contact</a>
+              <ng-template #comingSoonContact>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-envelope"></i> Contact</a>
+              </ng-template>
+            </li>
+            <li><a href="#" (click)="showComingSoon()"><i class="fas fa-rocket"></i> Blog</a></li>
         </ul>
     </nav>
+    <app-coming-soon-bubble [show]="showComingSoonBubble" [message]="comingSoonMessage"></app-coming-soon-bubble>
 </header>

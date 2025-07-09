@@ -16,12 +16,143 @@
 }
 
 body {
+  transition: background 0.6s cubic-bezier(0.4,0,0.2,1), color 0.4s cubic-bezier(0.4,0,0.2,1);
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #fff;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
   line-height: 1.6;
+}
+
+body.dark-mode {
+  background: linear-gradient(270deg, #23243a, #181824, #23243a, #181824);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+}
+
+body.light-mode {
+  background: linear-gradient(270deg, #e6f9f2, #b2f5ea, #e6f9f2, #b2f5ea);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #222;
+}
+
+body.light-mode .project-card,
+body.light-mode .card,
+body.light-mode .contact-card {
+  background: #e6f9f2 !important;
+  color: #14532d !important;
+  border: 1.5px solid #b2dfdb !important;
+  box-shadow: 0 4px 24px rgba(20,83,45,0.07);
+}
+body.light-mode .project-content h3,
+body.light-mode .project-content p,
+body.light-mode .tech-tag,
+body.light-mode .section-title {
+  color: #14532d !important;
+  text-shadow: none !important;
+}
+body.light-mode .project-content p {
+  color: #14532d !important;
+}
+body.light-mode .cta-button {
+  background: linear-gradient(45deg, #059669, #0ea5e9) !important;
+  color: #fff !important;
+  border: none !important;
+}
+body.light-mode .cta-button.outline {
+  background: transparent !important;
+  color: #059669 !important;
+  border: 2px solid #059669 !important;
+}
+body.light-mode .github-banner {
+  background: linear-gradient(45deg, #059669, #0ea5e9) !important;
+  color: #fff !important;
+}
+
+body.light-mode input,
+body.light-mode textarea {
+  background: rgba(255,255,255,0.95);
+  color: #222;
+  border: 1px solid #ccc;
+}
+
+body.light-mode .cta-button,
+body.light-mode .cta-button.outline {
+  background: #ffe066;
+  color: #222;
+  border: 1px solid #f7b801;
+}
+body.light-mode .cta-button.outline {
+  background: transparent;
+  color: #f7b801;
+}
+
+body.light-mode header,
+body.light-mode .logo,
+body.light-mode .logo-name,
+body.light-mode nav a,
+body.light-mode nav a:visited,
+body.light-mode nav a:active,
+body.light-mode nav a:focus,
+body.light-mode nav a:hover {
+  color: #14532d !important;
+  background: none !important;
+  -webkit-text-fill-color: #14532d !important;
+  -webkit-background-clip: unset !important;
+  text-shadow: none !important;
+}
+body.light-mode .logo-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+body.light-mode .fa,
+body.light-mode .fas,
+body.light-mode .fab {
+  color: #14532d !important;
+  text-shadow: none !important;
+}
+body.light-mode .hero-content h1,
+body.light-mode .hero-content h1 span,
+body.light-mode .hero-content p {
+  color: #14532d !important;
+  background: none !important;
+  -webkit-text-fill-color: #14532d !important;
+  -webkit-background-clip: unset !important;
+  text-shadow: none !important;
+}
+body.light-mode .profile-card .front h3,
+body.light-mode .profile-card .front p,
+body.light-mode .profile-card .back p,
+body.light-mode .profile-card .back .social-links a {
+  color: #14532d !important;
+  background: none !important;
+  -webkit-text-fill-color: #14532d !important;
+  -webkit-background-clip: unset !important;
+  text-shadow: none !important;
+}
+body.light-mode .profile-card .back .social-links a {
+  background: #e6f9f2 !important;
+}
+body.light-mode .timeline-content,
+body.light-mode .hero,
+body.light-mode .hero-content,
+body.light-mode .profile-card .front,
+body.light-mode .profile-card .back {
+  background: #e6f9f2 !important;
+  color: #14532d !important;
+  border: 1.5px solid #b2dfdb !important;
+  box-shadow: 0 4px 24px rgba(20,83,45,0.07) !important;
+  -webkit-text-fill-color: #14532d !important;
+  -webkit-background-clip: unset !important;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .contact-section {
@@ -182,6 +313,43 @@ html {
   100% { transform: translateX(-200px) translateY(var(--global-wave-y, 0px)); }
 }
 
+.bubble-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bubble-bg .bubble {
+  position: absolute;
+  bottom: -100px;
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: bubbleFloat 16s linear infinite;
+  background: linear-gradient(135deg, #34d399 60%, #47432f 100%);
+}
+body.dark-mode .bubble-bg .bubble {
+  background: linear-gradient(135deg, #8a2be2 60%, #00c9ff 100%);
+  opacity: 0.18;
+}
+body.light-mode .bubble-bg .bubble {
+  background: linear-gradient(135deg, #34d399 60%, #3b3722 100%);
+  opacity: 0.38;
+}
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.25;
+  }
+  80% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
 /* Responsive styles */
 @media (max-width: 900px) {
   .container, .contact-section {
@@ -215,4 +383,109 @@ html {
     font-size: 0.95rem;
     padding: 0.7rem;
   }
+}
+
+// Glassmorphism reusable class
+.glass-card {
+  background: linear-gradient(120deg, rgba(255,255,255,0.32) 0%, rgba(52,211,153,0.18) 100%), rgba(255,255,255,0.22);
+  border-radius: 18px;
+  border: 2.5px solid rgba(52,211,153,0.28);
+  box-shadow: 0 8px 32px 0 #0f0c2940, 0 2px 16px #34d39955;
+  backdrop-filter: blur(22px) saturate(1.4);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  color: #14532d;
+  transition: background 0.4s, box-shadow 0.4s, border 0.4s;
+  /* Add a subtle inner border for extra glass effect */
+  position: relative;
+  overflow: hidden;
+}
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(52,211,153,0.10) 100%);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+body.dark-mode .glass-card {
+  background: linear-gradient(120deg, rgba(31,38,135,0.32) 0%, rgba(138,43,226,0.18) 100%), rgba(31,38,135,0.22);
+  border: 2.5px solid rgba(138,43,226,0.28);
+  box-shadow: 0 8px 32px 0 #0f0c2940, 0 2px 16px #8a2be255;
+  color: #fff;
+}
+body.dark-mode .glass-card::before {
+  background: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(138,43,226,0.10) 100%);
+  opacity: 0.5;
+}
+
+body.light-mode .glass-card {
+  background: linear-gradient(120deg, rgba(255,255,255,0.65) 0%, rgba(180,240,220,0.55) 100%), rgba(52,211,153,0.10);
+  border: 2.5px solid rgba(255,255,255,0.7);
+  box-shadow: 0 10px 24px rgba(138,43,226,0.18);
+  color: #14532d;
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  transform: scale(1.03);
+}
+body.light-mode .glass-card::before {
+  background: linear-gradient(120deg, #fff 0%, rgba(180,240,220,0.18) 100%);
+  opacity: 0.85;
+}
+// Remove or override any conflicting backgrounds for card-like elements in light mode
+body.light-mode .project-card,
+body.light-mode .card,
+body.light-mode .contact-card,
+body.light-mode .profile-card .front,
+body.light-mode .profile-card .back,
+body.light-mode .timeline-content,
+body.light-mode .hero-content,
+body.light-mode footer {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+// Apply glass-card to all cards globally
+:global(.project-card),
+:global(.card),
+:global(.contact-card),
+:global(.profile-card .front),
+:global(.profile-card .back),
+:global(.timeline-content),
+:global(.hero-content),
+:global(footer) {
+  @extend .glass-card;
+}
+
+body.light-mode .profile-card .front,
+body.light-mode .profile-card .back {
+  background: linear-gradient(120deg, rgba(180,220,255,0.72) 0%, rgba(255,255,255,0.55) 100%);
+  border: 2.5px solid rgba(120,180,255,0.45);
+  box-shadow: 0 10px 32px 0 rgba(52,120,255,0.18), 0 2px 16px rgba(0,0,0,0.10);
+  color: #17416b !important;
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  transform: scale(1.03);
+}
+body.light-mode .hero {
+  background: linear-gradient(120deg, rgba(180,220,255,0.38) 0%, rgba(255,255,255,0.22) 100%), rgba(180,220,255,0.18) !important;
+  border: 2.5px solid rgba(120,180,255,0.22);
+  box-shadow: 0 10px 32px 0 rgba(52,120,255,0.13), 0 2px 16px rgba(0,0,0,0.08);
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+}
+body.light-mode footer {
+  color: #17416b !important;
+}
+body.dark-mode footer {
+  color: #f8fafc !important;
+}
+body.light-mode footer a, body.light-mode footer i {
+  color: #17416b !important;
+}
+body.dark-mode footer a, body.dark-mode footer i {
+  color: #f8fafc !important;
 }

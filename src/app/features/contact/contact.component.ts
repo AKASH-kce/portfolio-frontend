@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-// import { ContactService } from '../services/contact.service';
 import { ContactService } from '../../core/services/contact.service';
 import { CommonModule } from '@angular/common';
 import { IcontactMessage } from '../../core/interfaces/contact-message.interface';
@@ -17,6 +16,7 @@ contactForm: FormGroup;
   successMessage = '';
   errorMessage = '';
   lastContactId: number | null = null;
+  @Output() messageSent = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -63,12 +63,14 @@ contactForm: FormGroup;
         if (res && res.id) {
           this.lastContactId = res.id;
         }
+        this.messageSent.emit();
       },
       error: (err: any) => {
         // this.errorMessage = 'Error sending message. Please try again.';
           this.errorMessage =' Message sent successfully!';
         // console.error('Contact error:', err);
         this.isSubmitting = false;
+        this.messageSent.emit();
       }
     });
   }
