@@ -4,7 +4,7 @@ header {
   left: 0;
   width: calc(100% - 2rem);
   margin: 1rem auto 0 auto;
-  z-index: 2001;
+  z-index: 2002;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -106,7 +106,7 @@ nav a:hover::after {
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 200;
+  z-index: 2001;
   margin-left: 1rem;
 }
 .menu-icon span {
@@ -142,18 +142,26 @@ nav a:hover::after {
     position: absolute;
     top: 70px;
     right: 10px;
-    background: var(--card-bg);
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     flex-direction: column;
     gap: 0;
     width: 180px;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-20px);
     transition: all 0.3s cubic-bezier(.4,2,.6,1);
-    z-index: 150;
+    z-index: 2000;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  body.dark-mode nav ul {
+    background: rgba(31,38,135,0.18);
+    border: 1px solid rgba(138,43,226,0.1);
   }
   nav ul.open {
     opacity: 1;
@@ -161,13 +169,20 @@ nav a:hover::after {
     transform: translateY(0);
   }
   nav li {
-    margin: 0.5rem 0;
+    margin: 0.2rem 0;
     text-align: right;
   }
   nav a {
     font-size: 1.1rem;
-    padding: 0.7rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     display: block;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  nav a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
   }
   .logo-name {
     font-size: 1.1rem;

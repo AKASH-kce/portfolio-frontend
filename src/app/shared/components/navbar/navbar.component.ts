@@ -56,11 +56,28 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+    
+    // Hide/show contact bubble based on menu state
+    const contactBubble = document.querySelector('.contact-bubble') as HTMLElement;
+    if (contactBubble) {
+      if (this.isMenuOpen) {
+        contactBubble.style.display = 'none';
+      } else {
+        contactBubble.style.display = 'flex';
+      }
+    }
   }
 
   scrollToSection(event: Event, sectionId: string) {
     event.preventDefault();
     this.isMenuOpen = false;
+    
+    // Show contact bubble when menu closes
+    const contactBubble = document.querySelector('.contact-bubble') as HTMLElement;
+    if (contactBubble) {
+      contactBubble.style.display = 'flex';
+    }
+    
     if (this.implementedSections.includes(sectionId)) {
       const el = document.getElementById(sectionId);
       if (el) {
@@ -75,5 +92,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   showComingSoon() {
     console.log('showComingSoon called'); // Debug log
     this.bubbleService.show('Coming Soon');
+    
+    // Close menu and show contact bubble
+    this.isMenuOpen = false;
+    const contactBubble = document.querySelector('.contact-bubble') as HTMLElement;
+    if (contactBubble) {
+      contactBubble.style.display = 'flex';
+    }
   }
 }
