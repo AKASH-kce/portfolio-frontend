@@ -1,0 +1,42 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>Admin Dashboard</h1>
+      <div class="user-info">
+        <span>Welcome, {{ adminEmail }}</span>
+        <button class="logout-btn" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <main class="dashboard-main">
+    <div class="dashboard-content">
+      <div class="welcome-card">
+        <h2>Dashboard Work!</h2>
+        <p>You are now logged in as an administrator.</p>
+        <p>This is where you can manage your portfolio content.</p>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Views</h3>
+          <p class="stat-number">1,234</p>
+        </div>
+        <div class="stat-card">
+          <h3>Messages</h3>
+          <p class="stat-number">56</p>
+        </div>
+        <div class="stat-card">
+          <h3>Projects</h3>
+          <p class="stat-number">12</p>
+        </div>
+        <div class="stat-card">
+          <h3>Skills</h3>
+          <p class="stat-number">25</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,16 @@
+<nav class="sidebar">
+  <div class="sidebar-brand text-white d-flex align-items-center justify-content-center">
+    <i class="fas fa-cog fa-2x me-2"></i>
+    <span>Admin Panel</span>
+  </div>
+  <div class="sidebar-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item" *ngFor="let link of navLinks">
+        <a class="nav-link" [routerLink]="link.route" routerLinkActive="active">
+          <i [class]="link.icon"></i>
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav> 

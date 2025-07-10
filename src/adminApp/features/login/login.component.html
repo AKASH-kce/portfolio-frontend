@@ -1,0 +1,53 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Admin Login</h2>
+      <p>Access your portfolio dashboard</p>
+    </div>
+    
+    <form (ngSubmit)="onLogin()" class="login-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter admin email"
+          required
+          [disabled]="isLoading"
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter password"
+          required
+          [disabled]="isLoading"
+        >
+      </div>
+      
+      <button 
+        type="submit" 
+        class="login-btn"
+        [disabled]="!isFormValid() || isLoading"
+      >
+        <span *ngIf="!isLoading">Login</span>
+        <span *ngIf="isLoading">Logging in...</span>
+      </button>
+    </form>
+    
+    <!-- <div class="login-footer">
+      <p class="credentials-info">
+        <strong>Demo Credentials:</strong><br>
+        Email: admin&#64;portfolio.com<br>
+        Password: admin123
+      </p>
+    </div> -->
+  </div>
+</div> 

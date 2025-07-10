@@ -1,0 +1,51 @@
+<div class="modal fade" id="massEmailModal" tabindex="-1" aria-labelledby="massEmailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="massEmailModalLabel">Send Message to All Users</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+          <div class="mb-3">
+            <label for="emailSubject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="emailSubject" 
+                   [(ngModel)]="emailSubject" name="emailSubject" 
+                   placeholder="Enter email subject" required>
+          </div>
+          <div class="mb-3">
+            <label for="emailMessage" class="form-label">Message</label>
+            <textarea class="form-control" id="emailMessage" rows="8" 
+                      [(ngModel)]="emailMessage" name="emailMessage"
+                      placeholder="Type your message here..." required></textarea>
+          </div>
+          <div class="mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="includeInactive" 
+                     [(ngModel)]="includeInactive" name="includeInactive">
+              <label class="form-check-label" for="includeInactive">
+                Include inactive users
+              </label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Recipients: <span class="badge bg-primary">1,248 users</span></label>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                   role="progressbar" [style.width.%]="progress" 
+                   [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100">
+                {{ isSending ? 'Sending...' : 'Ready to send' }}
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" form="emailForm" class="btn btn-primary" [disabled]="isSending">
+          <i class="fas fa-paper-plane me-1"></i> Send to All Users
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 

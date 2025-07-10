@@ -489,3 +489,100 @@ body.light-mode footer a, body.light-mode footer i {
 body.dark-mode footer a, body.dark-mode footer i {
   color: #f8fafc !important;
 }
+
+// Admin Dashboard Styles
+:root {
+  --primary-color: #4e73df;
+  --secondary-color: #f8f9fc;
+  --accent-color: #2e59d9;
+}
+
+// Admin specific body styles
+body.admin-dashboard {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f8f9fc;
+  color: #333;
+}
+
+// Admin card styles
+.admin-dashboard .card {
+  border: none;
+  border-radius: 0.35rem;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.admin-dashboard .card-header {
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+// Admin button styles
+.admin-dashboard .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.admin-dashboard .btn-primary:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+// Admin table styles
+.admin-dashboard .user-table th {
+  background-color: #f8f9fc;
+  color: #4e73df;
+}
+
+// Admin badge styles
+.admin-dashboard .badge-online {
+  background-color: #1cc88a;
+}
+
+.admin-dashboard .badge-offline {
+  background-color: #e74a3b;
+}
+
+// Admin action button styles
+.admin-dashboard .action-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+// Admin modal styles
+.admin-dashboard #massEmailModal .modal-header {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+// Admin sidebar styles
+.admin-dashboard .sidebar {
+  background: linear-gradient(180deg, var(--primary-color) 0%, #224abe 100%);
+  min-height: 100vh;
+}
+
+.admin-dashboard .sidebar-brand {
+  height: 4.375rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  z-index: 1;
+}
+
+.admin-dashboard .nav-item {
+  position: relative;
+}
+
+.admin-dashboard .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.admin-dashboard .nav-link:hover {
+  color: #fff !important;
+}
+
+.admin-dashboard .nav-link i {
+  margin-right: 0.5rem;
+}

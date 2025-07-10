@@ -45,7 +45,10 @@ export const routes: Routes = [
     path: 'experience',
     loadComponent: () => import('./features/experience/experience.component').then(m => m.ExperienceComponent),
   },
-  // Optional: wildcard fallback
+  {
+    path: 'admin',
+    loadChildren: () => import('../adminApp/adminApp.routes').then(m => m.adminRoutes),
+  },
   {
     path: '**',
     redirectTo: '',

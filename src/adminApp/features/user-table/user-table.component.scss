@@ -1,0 +1,60 @@
+.user-table th {
+  background-color: #f8f9fc;
+  color: #4e73df;
+  font-weight: 600;
+  border-bottom: 2px solid #e3e6f0;
+}
+
+.badge-online {
+  background-color: #1cc88a;
+}
+
+.badge-offline {
+  background-color: #e74a3b;
+}
+
+.action-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  margin-right: 0.25rem;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.pagination {
+  margin-bottom: 0;
+}
+
+.page-link {
+  color: #4e73df;
+  border-color: #e3e6f0;
+}
+
+.page-item.active .page-link {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.dropdown-header {
+  font-weight: 600;
+  color: #4e73df;
+} 

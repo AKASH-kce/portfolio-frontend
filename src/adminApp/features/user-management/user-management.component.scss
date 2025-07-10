@@ -1,0 +1,43 @@
+:root {
+  --primary-color: #4e73df;
+  --secondary-color: #f8f9fc;
+  --accent-color: #2e59d9;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f8f9fc;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.col-md-2 {
+  padding: 0;
+}
+
+.col-md-9 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+main {
+  background-color: #f8f9fc;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .col-md-9 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  main {
+    padding: 1rem 0.5rem !important;
+  }
+} 

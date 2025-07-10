@@ -1,0 +1,82 @@
+#massEmailModal .modal-header {
+  background-color: #4e73df;
+  color: white;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.btn-close-white {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-control {
+  border: 1px solid #e3e6f0;
+  border-radius: 0.35rem;
+}
+
+.form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+.form-check-input:checked {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+
+.progress {
+  height: 1.5rem;
+  border-radius: 0.35rem;
+}
+
+.progress-bar {
+  background-color: #4e73df;
+}
+
+.progress-bar-striped {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+}
+
+.progress-bar-animated {
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% { background-position-x: 1rem; }
+}
+
+.badge.bg-primary {
+  background-color: #4e73df !important;
+}
+
+.modal-footer {
+  border-top: 1px solid #e3e6f0;
+}
+
+.btn-primary {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+
+.btn-primary:hover {
+  background-color: #2e59d9;
+  border-color: #2e59d9;
+}
+
+.btn-secondary {
+  background-color: #858796;
+  border-color: #858796;
+}
+
+.btn-secondary:hover {
+  background-color: #717384;
+  border-color: #717384;
+} 

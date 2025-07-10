@@ -130,10 +130,10 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     // Call backend to log visit and send email
-    this.http.get('https://portfolio-backend-docker-isvl.onrender.com/api/contact/Visit').subscribe({
-      next: () => {},
-      error: (err) => { console.error('Visit logging failed', err); }
-    });
+    // this.http.get('https://portfolio-backend-docker-isvl.onrender.com/api/contact/Visit').subscribe({
+    //   next: () => {},
+    //   error: (err) => { console.error('Visit logging failed', err); }
+    // });
   }
 
   openContactPopup(coords?: {x: number, y: number}) {

@@ -65,7 +65,12 @@
                 <a href="#" (click)="showComingSoon()"><i class="fas fa-envelope"></i> Contact</a>
               </ng-template>
             </li>
-            <li><a href="#" (click)="showComingSoon()"><i class="fas fa-rocket"></i> Blog</a></li>
+            <li>
+              <a *ngIf="implementedRoutes.includes('admin'); else comingSoonAdmin" routerLink="/admin" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-user-shield"></i> Admin</a>
+              <ng-template #comingSoonAdmin>
+                <a href="#" (click)="showComingSoon()"><i class="fas fa-user-shield"></i> Admin</a>
+              </ng-template>
+            </li>
         </ul>
     </nav>
     <app-coming-soon-bubble [show]="showComingSoonBubble" [message]="comingSoonMessage"></app-coming-soon-bubble>

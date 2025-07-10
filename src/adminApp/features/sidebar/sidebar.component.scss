@@ -1,0 +1,41 @@
+.sidebar {
+  background: linear-gradient(180deg, #4e73df 0%, #224abe 100%);
+  min-height: 100vh;
+  color: #fff;
+  width: 100%;
+  max-width: 250px;
+  padding: 0;
+}
+
+.sidebar-brand {
+  height: 4.375rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  z-index: 1;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fff !important;
+  background: rgba(255,255,255,0.08);
+}
+
+.nav-link i {
+  margin-right: 0.5rem;
+} 
