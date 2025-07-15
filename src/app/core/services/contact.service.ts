@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ContactService {
-  private apiBase = 'https://portfolio-backend-docker-isvl.onrender.com/api';
+  private apiBase = 'https://localhost:7155/api';
   private addContactUrl = `${this.apiBase}/contact/AddContact`;
   private downloadFileUrl = `${this.apiBase}/contact/DownloadFile`;
 
