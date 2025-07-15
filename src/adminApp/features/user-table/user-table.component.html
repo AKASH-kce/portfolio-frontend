@@ -24,9 +24,6 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Location</th>
-            <th>Status</th>
-            <th>Last Active</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -35,13 +32,6 @@
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.location }}</td>
-            <td>
-              <span class="badge" [class]="user.status === 'Active' ? 'badge-online text-white' : 'badge-offline text-white'">
-                {{ user.status }}
-              </span>
-            </td>
-            <td>{{ user.lastActive }}</td>
             <td>
               <button class="btn btn-sm btn-primary action-btn" title="View" (click)="onView(user)">
                 <i class="fas fa-eye"></i>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'admin-mass-email-modal',
@@ -15,21 +16,49 @@ export class MassEmailModalComponent {
   includeInactive = true;
   isSending = false;
   progress = 100;
+  errorMessage = '';
+
+  @ViewChild('modalRef', { static: true }) modalRef!: ElementRef;
+
+  constructor(private userService: UserService) {}
+
+  openModal() {
+    // Move modal to body for correct stacking
+    if (this.modalRef && this.modalRef.nativeElement && this.modalRef.nativeElement.parentNode !== document.body) {
+      document.body.appendChild(this.modalRef.nativeElement);
+    }
+    // @ts-ignore
+    const modal = new bootstrap.Modal(this.modalRef.nativeElement, { backdrop: true, focus: true, keyboard: true });
+    modal.show();
+    document.body.classList.add('modal-open-no-anim');
+  }
+
+  closeModal() {
+    // @ts-ignore
+    const modal = bootstrap.Modal.getInstance(this.modalRef.nativeElement);
+    if (modal) modal.hide();
+    document.body.classList.remove('modal-open-no-anim');
+  }
 
   onSubmit() {
     this.isSending = true;
     this.progress = 0;
-
-    const interval = setInterval(() => {
-      this.progress += 5;
-      if (this.progress >= 100) {
-        clearInterval(interval);
+    this.errorMessage = '';
+    this.userService.sendMassEmail(this.emailSubject, this.emailMessage).subscribe({
+      next: () => {
+        this.progress = 100;
         setTimeout(() => {
           this.isSending = false;
           this.resetForm();
+          this.closeModal();
         }, 1500);
+      },
+      error: (err) => {
+        this.isSending = false;
+        this.progress = 100;
+        this.errorMessage = err?.error?.message || 'Failed to send email. Please try again.';
       }
-    }, 100);
+    });
   }
 
   resetForm() {

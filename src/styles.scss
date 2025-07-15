@@ -282,8 +282,8 @@ html {
   width: 100vw;
   min-width: 100vw;
   height: 60px;
-  pointer-events: none;
-  z-index: 100;
+  pointer-events: none !important;
+  z-index: 100 !important;
   overflow-x: visible;
   overflow-y: hidden;
 }
@@ -585,4 +585,11 @@ body.admin-dashboard {
 
 .admin-dashboard .nav-link i {
   margin-right: 0.5rem;
+}
+
+body.modal-open-no-anim *,
+body.modal-open-no-anim *::before,
+body.modal-open-no-anim *::after {
+  animation: none !important;
+  transition: none !important;
 }

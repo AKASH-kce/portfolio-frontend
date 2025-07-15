@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HeaderComponent } from '../header/header.component';
@@ -21,15 +21,17 @@ import { MassEmailModalComponent } from '../mass-email-modal/mass-email-modal.co
   styleUrl: './user-management.component.scss'
 })
 export class UserManagementComponent implements OnInit, OnDestroy {
-  // Main dashboard component that brings all other components together
-  
+  @ViewChild(MassEmailModalComponent) massEmailModal!: MassEmailModalComponent;
+
   ngOnInit() {
-    // Add admin-dashboard class to body
     document.body.classList.add('admin-dashboard');
   }
-  
+
   ngOnDestroy() {
-    // Remove admin-dashboard class from body
     document.body.classList.remove('admin-dashboard');
+  }
+
+  onOpenMassEmail() {
+    this.massEmailModal.openModal();
   }
 } 

@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 1200;
 }
 
 .popup-content {
@@ -310,7 +310,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 3000;
+  z-index: 1200;
   background: transparent;
   pointer-events: all;
 }

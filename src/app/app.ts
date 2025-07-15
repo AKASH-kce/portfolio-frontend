@@ -7,11 +7,12 @@ import { ContactPopupComponent } from './shared/components/contact-popup.compone
 import { HttpClient } from '@angular/common/http';
 import { ComingSoonBubbleComponent } from './shared/components/coming-soon-bubble.component/coming-soon-bubble.component';
 import { BubbleService } from './core/services/bubble.service';
+import { MassEmailModalComponent } from '../adminApp/features/mass-email-modal/mass-email-modal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, Footer, ContactBubbleComponent, ContactPopupComponent,ComingSoonBubbleComponent],
+  imports: [RouterOutlet, NavbarComponent, Footer, ContactBubbleComponent, ContactPopupComponent,ComingSoonBubbleComponent,MassEmailModalComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

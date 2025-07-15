@@ -1,3 +1,11 @@
+#massEmailModal {
+  z-index: 4000 !important;
+}
+
+.modal-backdrop {
+  z-index: 3999 !important;
+}
+
 #massEmailModal .modal-header {
   background-color: #4e73df;
   color: white;

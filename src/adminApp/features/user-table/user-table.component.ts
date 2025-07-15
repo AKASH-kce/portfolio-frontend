@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'admin-user-table',
@@ -8,12 +9,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './user-table.component.html',
   styleUrl: './user-table.component.scss'
 })
-export class UserTableComponent {
-  users = [
-    { id: 1, name: 'John Smith', email: 'john.smith@example.com', location: 'New York, USA', status: 'Active', lastActive: '2 minutes ago' },
-    { id: 2, name: 'Sarah Johnson', email: 'sarah.j@example.com', location: 'London, UK', status: 'Active', lastActive: '15 minutes ago' },
-    { id: 3, name: 'Michael Chen', email: 'michael.c@example.com', location: 'Beijing, China', status: 'Inactive', lastActive: '3 days ago' }
-  ];
+export class UserTableComponent implements OnInit {
+  users: any[] = [];
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    });
+  }
 
   onView(user: any) {
     console.log('View user:', user);
