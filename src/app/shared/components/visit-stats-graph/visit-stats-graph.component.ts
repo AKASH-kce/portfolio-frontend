@@ -9,7 +9,18 @@ import { CommonModule, DatePipe } from '@angular/common';
   styleUrls: ['./visit-stats-graph.component.scss']
 })
 export class VisitStatsGraphComponent {
-  @Input() visitStats: { Date: string, Count: number }[] = [];
+  private _visitStats: { Date: Date, Count: number }[] = [];
+
+  @Input() set visitStats(value: { Date: string, Count: number }[]) {
+    this._visitStats = value?.map(stat => ({
+      ...stat,
+      Date: new Date(stat.Date)
+    })) ?? [];
+  }
+
+  get visitStats(): { Date: Date, Count: number }[] {
+    return this._visitStats;
+  }
 
   get maxCount(): number {
     return this.visitStats.length ? Math.max(...this.visitStats.map(s => s.Count)) : 1;
@@ -21,4 +32,4 @@ export class VisitStatsGraphComponent {
     }
     return 10;
   }
-} 
+}
