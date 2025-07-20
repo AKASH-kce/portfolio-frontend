@@ -22,7 +22,7 @@
       <div class="stats-grid">
         <div class="stat-card">
           <h3>Total Views</h3>
-          <p class="stat-number">1,234</p>
+          <p class="stat-number">{{ totalViews }}</p>
         </div>
         <div class="stat-card">
           <h3>Messages</h3>
@@ -36,6 +36,10 @@
           <h3>Skills</h3>
           <p class="stat-number">25</p>
         </div>
+      </div>
+      <!-- Visit Stats Graph -->
+      <div class="visit-stats-graph-wrapper">
+        <app-visit-stats-graph [visitStats]="visitStats"></app-visit-stats-graph>
       </div>
     </div>
   </main>
