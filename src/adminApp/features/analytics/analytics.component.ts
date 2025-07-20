@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { VisitStatsService } from '../../core/services/visit-stats.service';
-import { VisitStatsGraphComponent } from '../../../app/shared/components/visit-stats-graph/visit-stats-graph.component';
+import { Component, Input } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'admin-analytics',
+  selector: 'app-visit-stats-graph',
   standalone: true,
-  imports: [CommonModule, VisitStatsGraphComponent],
-  templateUrl: './analytics.component.html',
-  styleUrl: './analytics.component.scss'
+  imports: [CommonModule, DatePipe],
+  templateUrl: './visit-stats-graph.component.html',
+  styleUrls: ['./visit-stats-graph.component.scss']
 })
-export class AnalyticsComponent {
-  visitStats: { Date: string, Count: number }[] = [];
+export class VisitStatsGraphComponent {
+  private _visitStats: { Date: Date, Count: number }[] = [];
 
-  constructor(private visitStatsService: VisitStatsService) {
-    this.visitStatsService.getVisitStats().subscribe({
-      next: stats => {
-        const total = stats.reduce((sum, stat) => sum + stat.Count, 0);
-        this.visitStats = [{ Date: new Date().toISOString(), Count: 1000 + total }];
-      },
-      error: () => {
-        this.visitStats = [{ Date: new Date().toISOString(), Count: 1000 }];
-      }
-    });
+  @Input() set visitStats(value: { Date: string, Count: number }[]) {
+    this._visitStats = value?.map(stat => ({
+      ...stat,
+      Date: new Date(stat.Date)
+    })) ?? [];
   }
-} 
+
+  get visitStats(): { Date: Date, Count: number }[] {
+    return this._visitStats;
+  }
+
+  get maxCount(): number {
+    return this.visitStats.length ? Math.max(...this.visitStats.map(s => s.Count)) : 1;
+  }
+
+  getBarHeight(count: number): number {
+    if (this.maxCount > 0) {
+      return Math.max((count / this.maxCount) * 100, 10);
+    }
+    return 10;
+  }
+}
