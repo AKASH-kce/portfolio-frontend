@@ -12,7 +12,7 @@ export class VisitStatsGraphComponent {
   private _visitStats: { Date: Date, Count: number }[] = [];
 
   @Input() set visitStats(value: { Date: string, Count: number }[]) {
-    this._visitStats = value?.map(stat => ({
+    this._visitStats = value.map(stat => ({
       ...stat,
       Date: new Date(stat.Date)
     })) ?? [];
