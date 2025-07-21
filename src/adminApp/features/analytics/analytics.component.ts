@@ -18,12 +18,10 @@ export class AnalyticsComponent {
   constructor(private visitStatsService: VisitStatsService, private http: HttpClient) {
     this.visitStatsService.getVisitStats().subscribe({
       next: stats => {
-        const total = stats.reduce((sum, stat) => sum + (stat.Count ?? 0), 0);
-        this.visitStats = [{ Date: new Date().toISOString(), Count: 1000 + total }];
-        console.log(this.visitStats);
+        this.visitStats = stats;
       },
       error: () => {
-        this.visitStats = [{ Date: new Date().toISOString(), Count: 1000 }];
+        this.visitStats = [];
       }
     });
     // Fetch total visits
