@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       if (this.email === this.ADMIN_EMAIL && this.password === this.ADMIN_PASSWORD) {
     
-        localStorage.setItem('adminLoggedIn', 'true');
-        localStorage.setItem('adminEmail', this.email);
+        sessionStorage.setItem('adminLoggedIn', 'true');
+        sessionStorage.setItem('adminEmail', this.email);
         
         this.router.navigate(['/admin/dashboard']);
       } else {

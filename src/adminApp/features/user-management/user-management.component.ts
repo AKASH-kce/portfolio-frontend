@@ -11,7 +11,7 @@ import { MassEmailModalComponent } from '../mass-email-modal/mass-email-modal.co
   standalone: true,
   imports: [
     CommonModule,
-    SidebarComponent,
+    // SidebarComponent,
     HeaderComponent,
     StatsCardsComponent,
     UserTableComponent,

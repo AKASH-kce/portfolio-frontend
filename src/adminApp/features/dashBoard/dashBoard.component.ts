@@ -20,7 +20,7 @@ export class dashBoardComponent {
   }
 
   constructor(private router: Router, private visitStatsService: VisitStatsService) {
-    this.adminEmail = localStorage.getItem('adminEmail') || '';
+    this.adminEmail = sessionStorage.getItem('adminEmail') || '';
     this.visitStatsService.getVisitStats().subscribe({
       next: stats => {
         const total = stats.reduce((sum, stat) => sum + stat.Count, 0);
@@ -34,8 +34,8 @@ export class dashBoardComponent {
 
   logout() {
     // Clear admin session
-    localStorage.removeItem('adminLoggedIn');
-    localStorage.removeItem('adminEmail');
+    sessionStorage.removeItem('adminLoggedIn');
+    sessionStorage.removeItem('adminEmail');
     
     // Navigate to home page
     this.router.navigate(['/']);

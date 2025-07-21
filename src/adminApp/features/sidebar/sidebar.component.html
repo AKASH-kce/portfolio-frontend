@@ -1,4 +1,7 @@
-<nav class="sidebar">
+<button class="sidebar-toggle" (click)="toggleSidebar()">
+  <i class="fas fa-bars"></i>
+</button>
+<nav class="sidebar" [class.open]="sidebarOpen">
   <div class="sidebar-brand text-white d-flex align-items-center justify-content-center">
     <i class="fas fa-cog fa-2x me-2"></i>
     <span>Admin Panel</span>

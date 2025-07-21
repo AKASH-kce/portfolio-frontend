@@ -10,10 +10,15 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  sidebarOpen = false;
   navLinks = [
     { icon: 'fas fa-users', label: 'User Management', route: '/admin/dashboard', active: true },
     { icon: 'fas fa-chart-line', label: 'Analytics', route: '/admin/analytics', active: false },
     { icon: 'fas fa-cog', label: 'Settings', route: '/admin/settings', active: false },
     { icon: 'fas fa-sign-out-alt', label: 'Logout', route: '/admin/logout', active: false }
   ];
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
 } 
