@@ -18,6 +18,7 @@ export class VisitStatsGraphComponent {
       Count: stat.Count ?? 0,
       States: Array.isArray(stat.States) ? stat.States : []
     })) ?? [];
+    console.log('VisitStatsGraphComponent received:', this._visitStats);
   }
 
   get visitStats(): { Date: Date, Count: number, States?: { State: string, Count: number }[] }[] {
