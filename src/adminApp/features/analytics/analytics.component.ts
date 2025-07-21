@@ -18,6 +18,7 @@ export class AnalyticsComponent {
       next: stats => {
         const total = stats.reduce((sum, stat) => sum + stat.Count, 0);
         this.visitStats = [{ Date: new Date().toISOString(), Count: 1000 + total }];
+        console.log(this.visitStats);
       },
       error: () => {
         this.visitStats = [{ Date: new Date().toISOString(), Count: 1000 }];
