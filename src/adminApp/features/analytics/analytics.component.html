@@ -1,4 +1,8 @@
 <div class="analytics-container">
+  <div class="total-views-card">
+    <h2>Total Views</h2>
+    <div class="total-views-number">{{ totalVisits !== null ? totalVisits : '...' }}</div>
+  </div>
   <h2>Visit Analytics</h2>
   <app-visit-stats-graph [visitStats]="visitStats"></app-visit-stats-graph>
 </div> 

@@ -1,45 +1,77 @@
 .visit-stats-graph {
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  margin-bottom: 2rem;
+}
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2rem;
+  min-height: 180px;
+  margin-bottom: 2rem;
+}
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32px;
+}
+.bar {
   width: 100%;
-  padding: 1rem 0;
-  .bars {
-    display: flex;
-    align-items: flex-end;
-    height: 200px;
-    gap: 12px;
-    overflow-x: auto;
-    .bar-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 32px;
-      .bar {
-        width: 100%;
-        background: linear-gradient(135deg, #4f8cff, #6ee7b7);
-        border-radius: 6px 6px 0 0;
-        position: relative;
-        transition: height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        min-height: 8px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        .count-label {
-          position: absolute;
-          top: -24px;
-          font-size: 0.9rem;
-          color: #333;
-          font-weight: 600;
-          opacity: 0.85;
-        }
-      }
-      .date-label {
-        margin-top: 6px;
-        font-size: 0.8rem;
-        color: #666;
-        writing-mode: vertical-lr;
-        text-orientation: mixed;
-        transform: rotate(180deg);
-        opacity: 0.8;
-      }
-    }
-  }
+  min-width: 24px;
+  background: linear-gradient(135deg, #8a2be2, #00c9ff);
+  border-radius: 0.5rem 0.5rem 0 0;
+  position: relative;
+  transition: height 0.3s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.count-label {
+  position: absolute;
+  top: -1.5rem;
+  font-size: 0.95rem;
+  color: #fff;
+  background: #8a2be2;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.date-label {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #b2f5ea;
+}
+.state-table {
+  margin-top: 2rem;
+  background: rgba(0,0,0,0.08);
+  border-radius: 0.8rem;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.state-table h3 {
+  margin-bottom: 1rem;
+  color: #8a2be2;
+  font-size: 1.2rem;
+}
+.state-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.state-table th, .state-table td {
+  padding: 0.6rem 1rem;
+  text-align: left;
+}
+.state-table th {
+  background: #8a2be2;
+  color: #fff;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.state-table tr:nth-child(even) {
+  background: rgba(138,43,226,0.07);
+}
+.state-table td {
+  color: #fff;
 } 

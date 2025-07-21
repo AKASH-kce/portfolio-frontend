@@ -5,4 +5,28 @@
     font-size: 2rem;
     color: #333;
   }
+}
+.total-views-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #8a2be2, #00c9ff);
+  color: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.total-views-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+.total-views-number {
+  font-size: 2.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-top: 0.2rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.10);
 } 

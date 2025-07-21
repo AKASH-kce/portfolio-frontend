@@ -1,10 +1,24 @@
 <div class="visit-stats-graph">
   <div class="bars">
     <div *ngFor="let stat of visitStats" class="bar-container">
-      <div class="bar" [style.height.%]="getBarHeight(stat.Count)">
-        <span class="count-label">{{ stat.Count }}</span>
+      <div class="bar" [style.height.%]="getBarHeight(stat.Count ?? 0)">
+        <span class="count-label">{{ stat.Count ?? 0 }}</span>
       </div>
       <span class="date-label">{{ stat.Date | date: 'MM-dd' }}</span>
     </div>
+  </div>
+  <div class="state-table">
+    <h3>Visits by State</h3>
+    <table>
+      <thead>
+        <tr><th>State</th><th>Visits</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let state of getStateCounts()">
+          <td>{{ state.state }}</td>
+          <td>{{ state.count }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
