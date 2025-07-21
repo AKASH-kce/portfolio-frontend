@@ -6,6 +6,9 @@
   <h2>Visit Analytics</h2>
   <app-visit-stats-graph [visitStats]="visitStats"></app-visit-stats-graph>
   <h2>All Visits</h2>
+  <button class="btn btn-danger btn-sm" (click)="deleteAllVisits()" style="margin-bottom: 1rem;">
+    <i class="fas fa-trash"></i> Delete All
+  </button>
   <table>
     <thead>
       <tr>

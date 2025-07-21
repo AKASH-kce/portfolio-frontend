@@ -29,7 +29,19 @@ export class UserTableComponent implements OnInit {
   }
 
   onDelete(user: any) {
-    console.log('Delete user:', user);
+    this.deleteUser(user.id || user.Id);
+  }
+
+  onDeleteAll() {
+    const ids = this.users.map(u => u.id || u.Id);
+    ids.forEach(id => {
+      this.userService.deleteUser(id).subscribe({
+        next: () => {
+          this.users = this.users.filter(u => (u.id || u.Id) !== id);
+        }
+      });
+    });
+    this.users = [];
   }
 
   deleteUser(id: number) {

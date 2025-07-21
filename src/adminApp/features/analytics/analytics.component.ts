@@ -60,4 +60,12 @@ export class AnalyticsComponent {
       }
     });
   }
+
+  deleteAllVisits() {
+    const ids = this.allVisits.map(v => v.id || v.Id);
+    ids.forEach(id => {
+      this.deleteVisit(id);
+    });
+    this.allVisits = [];
+  }
 } 
