@@ -11,12 +11,12 @@ import { CommonModule, DatePipe } from '@angular/common';
 export class VisitStatsGraphComponent {
   private _visitStats: { Date: Date, Count: number, Location?: string }[] = [];
 
-  @Input() set visitStats(value: { Date: string, Count: number, Location?: string }[]) {
+  @Input() set visitStats(value: { Date: string, Count: number, States?: any[] }[]) {
     this._visitStats = value?.map(stat => ({
       ...stat,
-      Date: new Date(stat.Date),
+      Date: stat.Date ? new Date(stat.Date) : new Date(),
       Count: stat.Count ?? 0,
-      Location: stat.Location ?? ''
+      States: Array.isArray(stat.States) ? stat.States : []
     })) ?? [];
   }
 
