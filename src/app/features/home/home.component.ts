@@ -6,10 +6,13 @@ import { ExperienceComponent } from '../experience/experience.component';
 import { ContactPopupComponent } from '../../shared/components/contact-popup.component';
 import { Contact } from '../contact/contact.component';
 import { ComingSoonBubbleComponent } from '../../shared/components/coming-soon-bubble.component/coming-soon-bubble.component';
+import { ViewsGraphComponent } from '../views-graph/views-graph.component';
 
 @Component({
   selector: 'app-home',
-  imports: [SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, Contact],
+  imports: [
+    SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, Contact, ViewsGraphComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

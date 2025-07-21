@@ -21,4 +21,18 @@
       </tbody>
     </table>
   </div>
+  <div class="country-table" style="margin-top: 2rem;">
+    <h3>Visits by Country</h3>
+    <table>
+      <thead>
+        <tr><th>Country</th><th>Visits</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of getCountryCounts()">
+          <td>{{ country.country }}</td>
+          <td>{{ country.count }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

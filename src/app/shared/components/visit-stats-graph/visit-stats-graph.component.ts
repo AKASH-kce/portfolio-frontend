@@ -9,18 +9,19 @@ import { CommonModule, DatePipe } from '@angular/common';
   styleUrls: ['./visit-stats-graph.component.scss']
 })
 export class VisitStatsGraphComponent {
-  private _visitStats: { Date: Date, Count: number, States?: { State: string, Count: number }[] }[] = [];
+  private _visitStats: { Date: Date, Count: number, States?: { State: string, Count: number }[], Countries?: { Country: string, Count: number }[] }[] = [];
 
-  @Input() set visitStats(value: { Date: string, Count: number, States?: { State: string, Count: number }[] }[]) {
+  @Input() set visitStats(value: { Date: string, Count: number, States?: { State: string, Count: number }[], Countries?: { Country: string, Count: number }[] }[]) {
     this._visitStats = value?.map(stat => ({
       ...stat,
       Date: stat.Date ? new Date(stat.Date) : new Date(),
       Count: stat.Count ?? 0,
-      States: Array.isArray(stat.States) ? stat.States : []
+      States: Array.isArray(stat.States) ? stat.States : [],
+      Countries: Array.isArray(stat.Countries) ? stat.Countries : []
     })) ?? [];
   }
 
-  get visitStats(): { Date: Date, Count: number, States?: { State: string, Count: number }[] }[] {
+  get visitStats(): { Date: Date, Count: number, States?: { State: string, Count: number }[], Countries?: { Country: string, Count: number }[] }[] {
     return this._visitStats;
   }
 
@@ -48,5 +49,19 @@ export class VisitStatsGraphComponent {
       }
     }
     return Object.entries(stateMap).map(([state, count]) => ({ state, count })).sort((a, b) => b.count - a.count);
+  }
+
+  // Get visit counts by country from Countries array if present
+  getCountryCounts(): { country: string, count: number }[] {
+    const countryMap: { [key: string]: number } = {};
+    for (const stat of this.visitStats) {
+      if (Array.isArray(stat.Countries)) {
+        for (const countryObj of stat.Countries) {
+          const country = countryObj.Country || 'Unknown';
+          countryMap[country] = (countryMap[country] || 0) + (countryObj.Count ?? 0);
+        }
+      }
+    }
+    return Object.entries(countryMap).map(([country, count]) => ({ country, count })).sort((a, b) => b.count - a.count);
   }
 }
