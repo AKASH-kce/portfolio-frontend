@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './analytics.component.scss'
 })
 export class AnalyticsComponent {
-  visitStats: { Date: string, Count: number }[] = [];
+  visitStats: { Date: string, Count: number, States: { State: string, Count: number }[] }[] = [];
   totalVisits: number | null = null;
 
   constructor(private visitStatsService: VisitStatsService, private http: HttpClient) {

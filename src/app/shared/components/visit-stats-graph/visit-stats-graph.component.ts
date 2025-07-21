@@ -9,9 +9,9 @@ import { CommonModule, DatePipe } from '@angular/common';
   styleUrls: ['./visit-stats-graph.component.scss']
 })
 export class VisitStatsGraphComponent {
-  private _visitStats: { Date: Date, Count: number, Location?: string }[] = [];
+  private _visitStats: { Date: Date, Count: number, States?: { State: string, Count: number }[] }[] = [];
 
-  @Input() set visitStats(value: { Date: string, Count: number, States?: any[] }[]) {
+  @Input() set visitStats(value: { Date: string, Count: number, States?: { State: string, Count: number }[] }[]) {
     this._visitStats = value?.map(stat => ({
       ...stat,
       Date: stat.Date ? new Date(stat.Date) : new Date(),
@@ -20,7 +20,7 @@ export class VisitStatsGraphComponent {
     })) ?? [];
   }
 
-  get visitStats(): { Date: Date, Count: number, Location?: string }[] {
+  get visitStats(): { Date: Date, Count: number, States?: { State: string, Count: number }[] }[] {
     return this._visitStats;
   }
 
@@ -36,14 +36,16 @@ export class VisitStatsGraphComponent {
     return 10;
   }
 
-  // New: Get visit counts by state
+  // Get visit counts by state from States array if present
   getStateCounts(): { state: string, count: number }[] {
     const stateMap: { [key: string]: number } = {};
     for (const stat of this.visitStats) {
-      // Assume Location format: "City, State, Country"
-      const parts = stat.Location?.split(',').map((s: string) => s.trim()) ?? [];
-      const state = parts.length >= 2 ? parts[1] : 'Unknown';
-      stateMap[state] = (stateMap[state] || 0) + (stat.Count ?? 0);
+      if (Array.isArray(stat.States)) {
+        for (const stateObj of stat.States) {
+          const state = stateObj.State || 'Unknown';
+          stateMap[state] = (stateMap[state] || 0) + (stateObj.Count ?? 0);
+        }
+      }
     }
     return Object.entries(stateMap).map(([state, count]) => ({ state, count })).sort((a, b) => b.count - a.count);
   }

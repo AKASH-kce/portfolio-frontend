@@ -1,8 +1,8 @@
 <div class="visit-stats-graph">
   <div class="bars">
     <div *ngFor="let stat of visitStats" class="bar-container">
-      <div class="bar" [style.height.%]="getBarHeight(stat.Count ?? 0)">
-        <span class="count-label">{{ stat.Count ?? 0 }}</span>
+      <div class="bar" [style.height.%]="getBarHeight(stat.Count)">
+        <span class="count-label">{{ stat.Count }}</span>
       </div>
       <span class="date-label">{{ stat.Date | date: 'MM-dd' }}</span>
     </div>

@@ -10,7 +10,7 @@ export class VisitStatsService {
 
   constructor(private http: HttpClient) {}
 
-  getVisitStats(): Observable<{ Date: string, Count: number }[]> {
-    return this.http.get<{ Date: string, Count: number }[]>(this.apiUrl);
+  getVisitStats(): Observable<{ Date: string, Count: number, States: { State: string, Count: number }[] }[]> {
+    return this.http.get<{ Date: string, Count: number, States: { State: string, Count: number }[] }[]>(this.apiUrl);
   }
 } 
