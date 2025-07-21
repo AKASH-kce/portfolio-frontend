@@ -5,4 +5,29 @@
   </div>
   <h2>Visit Analytics</h2>
   <app-visit-stats-graph [visitStats]="visitStats"></app-visit-stats-graph>
+  <h2>All Visits</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Timestamp</th>
+        <th>IP</th>
+        <th>Location</th>
+        <th>Referer</th>
+        <th>Url</th>
+        <th>UserAgent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let visit of allVisits">
+        <td>{{ visit.id || visit.Id }}</td>
+        <td>{{ visit.timestamp || visit.Timestamp }}</td>
+        <td>{{ visit.ip || visit.IP }}</td>
+        <td>{{ visit.location || visit.Location }}</td>
+        <td>{{ visit.referer || visit.Referer }}</td>
+        <td>{{ visit.url || visit.Url }}</td>
+        <td>{{ visit.userAgent || visit.UserAgent }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div> 

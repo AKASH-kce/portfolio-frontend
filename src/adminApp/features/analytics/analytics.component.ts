@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class AnalyticsComponent {
   visitStats: { Date: string, Count: number, States: { State: string, Count: number }[] }[] = [];
   totalVisits: number | null = null;
+  allVisits: any[] = [];
 
   constructor(private visitStatsService: VisitStatsService, private http: HttpClient) {
     this.visitStatsService.getVisitStats().subscribe({
@@ -35,6 +36,10 @@ export class AnalyticsComponent {
       error: () => {
         this.visitStats = [];
       }
+    });
+    this.visitStatsService.getAllVisits().subscribe({
+      next: visits => this.allVisits = visits,
+      error: () => this.allVisits = []
     });
     // Fetch total visits
     this.http.get<{ TotalVisits: number }>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/TotalVisits')
