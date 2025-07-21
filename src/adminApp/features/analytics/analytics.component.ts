@@ -19,6 +19,18 @@ export class AnalyticsComponent {
     this.visitStatsService.getVisitStats().subscribe({
       next: stats => {
         this.visitStats = stats;
+        // Log state-wise visit counts
+        const stateMap: { [key: string]: number } = {};
+        for (const stat of this.visitStats) {
+          if (Array.isArray(stat.States)) {
+            for (const stateObj of stat.States) {
+              const state = stateObj.State || 'Unknown';
+              stateMap[state] = (stateMap[state] || 0) + (stateObj.Count ?? 0);
+            }
+          }
+        }
+        const stateCounts = Object.entries(stateMap).map(([state, count]) => ({ state, count }));
+        console.log('State-wise visit counts:', stateCounts);
       },
       error: () => {
         this.visitStats = [];
@@ -27,7 +39,11 @@ export class AnalyticsComponent {
     // Fetch total visits
     this.http.get<{ TotalVisits: number }>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/TotalVisits')
       .subscribe({
-        next: res => this.totalVisits = res.TotalVisits,
+        next: res => {
+          this.totalVisits = res.TotalVisits;
+          // Log total visits
+          console.log('Total visits:', this.totalVisits);
+        },
         error: () => this.totalVisits = null
       });
   }
