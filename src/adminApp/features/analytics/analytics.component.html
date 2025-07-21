@@ -27,6 +27,7 @@
         <td>{{ visit.referer || visit.Referer }}</td>
         <td>{{ visit.url || visit.Url }}</td>
         <td>{{ visit.userAgent || visit.UserAgent }}</td>
+        <td><button (click)="deleteVisit(visit.id || visit.Id)">Delete</button></td>
       </tr>
     </tbody>
   </table>

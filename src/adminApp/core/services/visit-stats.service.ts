@@ -27,4 +27,8 @@ export class VisitStatsService {
   getAllVisits(): Observable<any[]> {
     return this.http.get<any[]>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/AllVisits');
   }
+
+  deleteVisit(id: number): Observable<any> {
+    return this.http.delete(`https://portfolio-backend-docker-isvl.onrender.com/api/contact/DeleteVisit/${id}`);
+  }
 } 

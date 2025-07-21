@@ -52,4 +52,12 @@ export class AnalyticsComponent {
         error: () => this.totalVisits = null
       });
   }
+
+  deleteVisit(id: number) {
+    this.visitStatsService.deleteVisit(id).subscribe({
+      next: () => {
+        this.allVisits = this.allVisits.filter(v => (v.id || v.Id) !== id);
+      }
+    });
+  }
 } 

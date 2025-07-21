@@ -31,4 +31,12 @@ export class UserTableComponent implements OnInit {
   onDelete(user: any) {
     console.log('Delete user:', user);
   }
+
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe({
+      next: () => {
+        this.users = this.users.filter(u => (u.id || u.Id) !== id);
+      }
+    });
+  }
 } 

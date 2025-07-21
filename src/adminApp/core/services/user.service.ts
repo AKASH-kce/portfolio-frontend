@@ -17,4 +17,8 @@ export class UserService {
   sendMassEmail(subject: string, message: string): Observable<any> {
     return this.http.post(this.apiUrl + '/send-mass-email', { subject, message });
   }
+
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`https://portfolio-backend-docker-isvl.onrender.com/api/contact/DeleteUser/${id}`);
+  }
 }
