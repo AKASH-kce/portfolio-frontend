@@ -48,24 +48,37 @@ export class ViewsGraphComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.http.get<any[]>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/VisitStats').subscribe({
-      next: stats => {
-        if (Array.isArray(stats) && stats.length > 0) {
-          this.visitStats = [...this.sampleStats, ...stats];
-        } else {
-          this.visitStats = this.sampleStats;
-        }
-        this.setupCharts();
-        this.loading = false;
-      },
-      error: () => {
+ngOnInit() {
+  this.http.get<any[]>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/VisitStats').subscribe({
+    next: stats => {
+      if (Array.isArray(stats) && stats.length > 0) {
+        const normalizedStats = stats.map(stat => ({
+          Date: stat.date,
+          Count: stat.count,
+          Countries: stat.countries?.map((c: { country: any; count: any; }) => ({
+            Country: c.country,
+            Count: c.count
+          })) || [],
+          States: stat.states?.map((s: { state: any; count: any; }) => ({
+            State: s.state,
+            Count: s.count
+          })) || []
+        }));
+        this.visitStats = [...this.sampleStats, ...normalizedStats];
+      } else {
         this.visitStats = this.sampleStats;
-        this.setupCharts();
-        this.loading = false;
       }
-    });
-  }
+      this.setupCharts();
+      this.loading = false;
+    },
+    error: () => {
+      this.visitStats = this.sampleStats;
+      this.setupCharts();
+      this.loading = false;
+    }
+  });
+}
+
 
   setupCharts() {
     const countryMap: { [key: string]: number } = {};
@@ -125,15 +138,15 @@ export class ViewsGraphComponent implements OnInit {
         subtext: 'Top states visiting your portfolio',
         left: 'center',
         textStyle: {
-          color: '#8a2be2', // Unified accent color
+          color: '#8a2be2',
           fontSize: 22,
           fontWeight: 'bold',
           fontFamily: 'Montserrat, Arial, sans-serif',
-          textShadowColor: '#181c2f', // Subtle dark shadow to match UI
+          textShadowColor: '#181c2f', 
           textShadowBlur: 8
         },
         subtextStyle: {
-          color: '#b2f5ea', // Soft teal for subtitle
+          color: '#b2f5ea', 
           fontSize: 15,
           fontWeight: 'normal',
           fontFamily: 'Montserrat, Arial, sans-serif',
