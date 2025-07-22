@@ -150,7 +150,6 @@ export class ViewsGraphComponent implements OnInit {
           }
         }
       ],
-      // 👇 Responsive legend position for mobile
       media: [
         {
           query: {
@@ -160,17 +159,23 @@ export class ViewsGraphComponent implements OnInit {
             legend: {
               orient: 'horizontal',
               left: 'center',
-              bottom: 0
+              bottom: 10,
+              itemGap: 10,
+              textStyle: {
+                fontSize: 12
+              }
             },
             series: [
               {
-                radius: '55%',
-                top: 40
+                radius: '50%',
+                top: '10%',
+                bottom: '20%'
               }
             ]
           }
         }
       ]
+
     });
 
 
