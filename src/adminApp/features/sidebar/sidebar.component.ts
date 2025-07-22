@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -11,14 +11,48 @@ import { RouterModule } from '@angular/router';
 })
 export class SidebarComponent {
   sidebarOpen = false;
+  isMobile = false;
+
   navLinks = [
-    { icon: 'fas fa-users', label: 'User Management', route: '/admin/dashboard', active: true },
-    { icon: 'fas fa-chart-line', label: 'Analytics', route: '/admin/analytics', active: false },
-    { icon: 'fas fa-cog', label: 'Settings', route: '/admin/settings', active: false },
-    { icon: 'fas fa-sign-out-alt', label: 'Logout', route: '/admin/logout', active: false }
+    { icon: 'fas fa-users', label: 'User Management', route: '/admin/dashboard' },
+    { icon: 'fas fa-chart-line', label: 'Analytics', route: '/admin/analytics' },
+    { icon: 'fas fa-cog', label: 'Settings', route: '/admin/settings' },
+    { icon: 'fas fa-sign-out-alt', label: 'Logout', route: '/admin/logout' }
   ];
 
+  constructor() {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth <= 768;
+    if (!this.isMobile) {
+      this.sidebarOpen = true;
+    } else {
+      this.sidebarOpen = false;
+    }
+  }
+
+  openSidebar() {
+    if (this.isMobile) this.sidebarOpen = true;
+  }
+
+  closeSidebar() {
+    if (this.isMobile) this.sidebarOpen = false;
+  }
+
   toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
+    if (this.isMobile) {
+      this.sidebarOpen = !this.sidebarOpen;
+    }
+  }
+
+  onNavLinkClick() {
+    this.closeSidebar();
   }
 } 

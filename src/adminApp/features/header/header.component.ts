@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,9 +11,9 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   title = 'User Management';
 
-  @Output() openMassEmail = new EventEmitter<void>();
+  @Output() massEmail = new EventEmitter<void>();
 
   triggerMassEmailModal() {
-    this.openMassEmail.emit();
+    this.massEmail.emit();
   }
 } 

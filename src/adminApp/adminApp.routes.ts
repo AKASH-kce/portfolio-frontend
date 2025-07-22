@@ -29,7 +29,6 @@ export const adminRoutes: Routes = [
         loadComponent: () =>
           import('./features/analytics/analytics.component').then(m => m.AnalyticsComponent),
       },
-      // Add more admin routes here as needed
     ]
   },
   {

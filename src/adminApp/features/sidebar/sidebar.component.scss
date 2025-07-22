@@ -5,6 +5,8 @@
   width: 100%;
   max-width: 250px;
   padding: 0;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  z-index: 1050;
 }
 
 .sidebar-brand {
@@ -40,7 +42,6 @@
   margin-right: 0.5rem;
 }
 
-// Responsive styles
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
@@ -49,20 +50,25 @@
     height: 100vh;
     width: 220px;
     max-width: 80vw;
-    z-index: 1000;
+    z-index: 1050;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
     box-shadow: 2px 0 8px rgba(0,0,0,0.15);
   }
   .sidebar.open {
     transform: translateX(0);
   }
+  .sidebar:not(.open) {
+    pointer-events: none;
+  }
+  .sidebar.open {
+    pointer-events: auto;
+  }
   .sidebar-toggle {
     display: block;
     position: fixed;
-    top: 1rem;
+    top: 4.2rem;
     left: 1rem;
-    z-index: 1100;
+    z-index: 2000;
     background: #4e73df;
     color: #fff;
     border: none;
@@ -71,10 +77,43 @@
     font-size: 1.5rem;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background 0.2s;
+  }
+  .sidebar-toggle.open .fa-bars {
+    transform: rotate(90deg);
+    transition: transform 0.3s;
+  }
+  .overlay {
+    display: none;
+  }
+  .overlay.open {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 1040;
+    animation: fadeIn 0.3s;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
 
-// Hide toggle button on desktop
-.sidebar-toggle {
-  display: none;
+@media (min-width: 769px) {
+  .sidebar-toggle {
+    display: none;
+  }
+  .overlay {
+    display: none !important;
+  }
+  .sidebar {
+    position: static;
+    transform: none !important;
+    box-shadow: none;
+    pointer-events: auto;
+  }
 } 

@@ -1,7 +1,25 @@
-<button class="sidebar-toggle" (click)="toggleSidebar()">
+<!-- Hamburger toggle button (mobile only) -->
+<button
+  class="sidebar-toggle"
+  *ngIf="isMobile"
+  (click)="toggleSidebar()"
+  [class.open]="sidebarOpen"
+  aria-label="Open menu"
+>
   <i class="fas fa-bars"></i>
 </button>
-<nav class="sidebar" [class.open]="sidebarOpen">
+
+<!-- Overlay (mobile only, visible when sidebar is open) -->
+<div
+  class="overlay"
+  *ngIf="isMobile"
+  [class.open]="sidebarOpen"
+  (click)="closeSidebar()"
+>
+</div>
+
+<!-- Sidebar -->
+<nav class="sidebar" [class.open]="sidebarOpen || !isMobile">
   <div class="sidebar-brand text-white d-flex align-items-center justify-content-center">
     <i class="fas fa-cog fa-2x me-2"></i>
     <span>Admin Panel</span>
@@ -9,7 +27,12 @@
   <div class="sidebar-sticky pt-3">
     <ul class="nav flex-column">
       <li class="nav-item" *ngFor="let link of navLinks">
-        <a class="nav-link" [routerLink]="link.route" routerLinkActive="active">
+        <a
+          class="nav-link"
+          [routerLink]="link.route"
+          routerLinkActive="active"
+          (click)="onNavLinkClick()"
+        >
           <i [class]="link.icon"></i>
           {{ link.label }}
         </a>
