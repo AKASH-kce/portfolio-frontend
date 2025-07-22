@@ -46,7 +46,7 @@ export class ViewsGraphComponent implements OnInit {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.http.get<any[]>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/VisitStats').subscribe({
@@ -99,7 +99,7 @@ export class ViewsGraphComponent implements OnInit {
         text: titleText,
         subtext: subtitle,
         left: 'center',
-        top:10,
+        top: 10,
         textStyle: {
           color: '#8a2be2',
           fontSize: 22,
@@ -119,8 +119,8 @@ export class ViewsGraphComponent implements OnInit {
       },
       legend: {
         orient: 'vertical',
-        left:10,
-       top:100,
+        left: 10,
+        top: 100,
         textStyle: {
           color: '#e2e8f0'
         }
@@ -149,8 +149,30 @@ export class ViewsGraphComponent implements OnInit {
             }
           }
         }
+      ],
+      // 👇 Responsive legend position for mobile
+      media: [
+        {
+          query: {
+            maxWidth: 600
+          },
+          option: {
+            legend: {
+              orient: 'horizontal',
+              left: 'center',
+              bottom: 0
+            },
+            series: [
+              {
+                radius: '55%',
+                top: 40
+              }
+            ]
+          }
+        }
       ]
     });
+
 
     this.countryChartOptions = pieChartBase(
       '🌍 Portfolio Visits by Country',
