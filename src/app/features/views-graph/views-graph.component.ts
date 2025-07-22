@@ -135,7 +135,7 @@ ngOnInit() {
     this.stateChartOptions = {
       title: {
         text: '📊 Portfolio Visits by State',
-        subtext: 'Top states visiting your portfolio',
+        subtext: 'Top states visiting my portfolio',
         left: 'center',
         textStyle: {
           color: '#8a2be2',

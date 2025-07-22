@@ -1,7 +1,12 @@
 <div class="views-graph">
   <div *ngIf="loading" class="loading-spinner">Loading analytics...</div>
+
   <div *ngIf="!loading">
     <div echarts [options]="countryChartOptions" class="chart" style="height: 350px;"></div>
     <div echarts [options]="stateChartOptions" class="chart" style="height: 350px; margin-top: 2rem;"></div>
+
+    <div class="footer-message floating-text">
+      Thank you for visiting my site 🙏
+    </div>
   </div>
-</div> 
+</div>
