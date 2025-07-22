@@ -141,7 +141,8 @@ export class ViewsGraphComponent implements OnInit {
           },
           label: {
             color: '#edf2f7',
-            fontSize: 13
+            fontSize: 13,
+            formatter:'{b}: {c} ({d}%)'
           },
           labelLine: {
             lineStyle: {

@@ -15,9 +15,9 @@ export interface SocialLink {
 })
 export class ProfileCardComponent {
   @Input() name = 'Akash S';
-  @Input() title = 'Product Engineer';
+  @Input() title = 'Software Engineer';
   @Input() image = 'assets/akashProfile.JPG';
-  @Input() description = 'Product Engineer at ClaySys Technologies. Experienced in full-stack development, passionate about building modern web apps.';
+  @Input() description = 'software Engineer at ClaySys Technologies. Experienced in full-stack development, passionate about building modern web apps.';
   @Input() socialLinks: SocialLink[] = [];
   @Output() comingSoon = new EventEmitter<{link: any, event: MouseEvent}>();
 
