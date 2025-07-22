@@ -1,7 +1,7 @@
 <section class="experience-section">
   <h2 class="section-title">Experience</h2>
   <div class="timeline-items">
-    <div class="timeline-item" *ngFor="let exp of experiences">
+    <div class="timeline-item" *ngFor="let exp of experiences"  (click)="openLink(exp.link)">
       <div class="timeline-dot">
         <svg class="flower-dot" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g>

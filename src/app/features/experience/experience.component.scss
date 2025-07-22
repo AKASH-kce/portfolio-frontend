@@ -33,6 +33,9 @@
   transform: translateY(40px);
   transition: opacity 0.8s, transform 0.8s;
 }
+.timeline-item:hover {
+  cursor: pointer;
+}
 .timeline-item.visible {
   opacity: 1;
   transform: translateY(0);

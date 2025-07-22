@@ -14,13 +14,15 @@ export class ExperienceComponent implements AfterViewInit {
       date: '2024-August <-> 2025-April',
       title: 'Product Engineer - Level 1',
       company: 'ClaySys Technologies, Kochi, Kerala, India',
-      description: 'Full-time position, working on developing and optimizing web applications using modern technologies. Focused on backend APIs and frontend development.'
+      description: 'Full-time position, working on developing and optimizing web applications using modern technologies. Focused on backend APIs and frontend development.',
+       link: 'https://www.claysys.com/'
     },
     {
       date: '2025-May <-> Present',
       title: 'Product Engineer - Level 2',
       company: 'ClaySys Technologies, Kochi, Kerala, India',
-      description: 'Full-time position, working on developing and optimizing web applications using modern technologies. Focused on backend APIs and frontend development.'
+      description: 'Full-time position, working on developing and optimizing web applications using modern technologies. Focused on backend APIs and frontend development.',
+       link: 'https://www.claysys.com/'
     }
   ];
 
@@ -30,14 +32,12 @@ export class ExperienceComponent implements AfterViewInit {
     const section = this.el.nativeElement.querySelector('.experience-section');
     const items = this.el.nativeElement.querySelectorAll('.timeline-item');
     const reveal = () => {
-      // Section animation
       if (section) {
         const rect = section.getBoundingClientRect();
         if (rect.top < window.innerHeight - 60) {
           this.renderer.addClass(section, 'section-visible');
         }
       }
-      // Timeline item animation
       items.forEach((item: HTMLElement) => {
         const rect = item.getBoundingClientRect();
         if (rect.top < window.innerHeight - 60) {
@@ -48,4 +48,8 @@ export class ExperienceComponent implements AfterViewInit {
     window.addEventListener('scroll', reveal);
     reveal();
   }
+  openLink(url: string) {
+  window.open(url, '_blank');
+}
+
 } 
