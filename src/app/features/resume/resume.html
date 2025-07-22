@@ -1,1 +1,46 @@
-<p>resume works!</p>
+<div *ngIf="visible" class="resume-modal">
+    <div class="resume-modal-content">
+        <button class="resume-close-btn" (click)="onClose()" aria-label="Close">
+            <div class="close-tooltip">Close</div>
+            <span class="flower-icon">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <circle cx="19" cy="19" r="6" fill="#462901ff" />
+                        <ellipse cx="19" cy="6" rx="4" ry="7" fill="#1c100b" />
+                        <ellipse cx="19" cy="32" rx="4" ry="7" fill="#a80c4dff" />
+                        <ellipse cx="6" cy="19" rx="7" ry="4" fill="#1c100b" />
+                        <ellipse cx="32" cy="19" rx="7" ry="4" fill="#a80c4dff" />
+                        <ellipse cx="10" cy="10" rx="4" ry="7" transform="rotate(-45 10 10)" fill="#a80c4dff" />
+                        <ellipse cx="28" cy="28" rx="4" ry="7" transform="rotate(-45 28 28)" fill="#1c100b" />
+                        <ellipse cx="28" cy="10" rx="7" ry="4" transform="rotate(45 28 10)" fill="#a80c4dff" />
+                        <ellipse cx="10" cy="28" rx="7" ry="4" transform="rotate(45 10 28)" fill="#a80c4dff" />
+                    </g>
+                    <g class="rose-x">
+                        <g transform="rotate(0 19 19)">
+                            <line x1="15" y1="15" x2="23" y2="23" />
+                            <line x1="23" y1="15" x2="15" y2="23" />
+                        </g>
+                        <g transform="rotate(36 19 19)">
+                            <line x1="15" y1="15" x2="23" y2="23" />
+                            <line x1="23" y1="15" x2="15" y2="23" />
+                        </g>
+                        <g transform="rotate(72 19 19)">
+                            <line x1="15" y1="15" x2="23" y2="23" />
+                            <line x1="23" y1="15" x2="15" y2="23" />
+                        </g>
+                        <g transform="rotate(108 19 19)">
+                            <line x1="15" y1="15" x2="23" y2="23" />
+                            <line x1="23" y1="15" x2="15" y2="23" />
+                        </g>
+                        <g transform="rotate(144 19 19)">
+                            <line x1="15" y1="15" x2="23" y2="23" />
+                            <line x1="23" y1="15" x2="15" y2="23" />
+                        </g>
+                    </g>
+                </svg>
+            </span>
+        </button>
+
+        <embed src="assets/resume.pdf" type="application/pdf" width="100%" height="100%" />
+    </div>
+</div>

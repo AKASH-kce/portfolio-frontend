@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { ComingSoonBubbleComponent } from '../coming-soon-bubble.component/coming-soon-bubble.component';
 import { BubbleService } from '../../../core/services/bubble.service';
 import { Subscription } from 'rxjs';
+import { Resume } from '../../../features/resume/resume';
 @Component({
   selector: 'app-navbar',
-  imports:[ThemeToggleComponent, CommonModule, RouterModule, ComingSoonBubbleComponent],
+  imports:[ThemeToggleComponent, CommonModule, RouterModule, ComingSoonBubbleComponent,Resume],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
@@ -46,7 +47,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     'projects',
     'skills',
     'experience',
-    'contact'
+    'contact',
+    'resume'
   ];
 
 
@@ -99,5 +101,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (contactBubble) {
       contactBubble.style.display = 'flex';
     }
+  }
+  showResumeModal:boolean=false;
+  openResume(){
+   this.showResumeModal=true;
+  }
+  closeResumeModal(){
+    this.showResumeModal=false;
   }
 }

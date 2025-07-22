@@ -1,0 +1,65 @@
+
+.resume-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ z-index: 9999;
+}
+
+.resume-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  height: 90%;
+  background-color: black;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.resume-close-btn {
+  position: absolute;
+  top: 52px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flower-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.close-tooltip {
+  position: relative;
+  color: white;
+  background-color: #ff4c4c;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-weight: 500;
+  margin-right: 8px; /* move tooltip to the left of the icon */
+}
+
+.close-tooltip::before {
+  content: '';
+  position: absolute;
+  left: 100%; /* arrow on right of tooltip */
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #ff4c4c;
+}

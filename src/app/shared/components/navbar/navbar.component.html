@@ -42,7 +42,7 @@
               </ng-template>
             </li>
             <li>
-              <a *ngIf="implementedRoutes.includes('resume'); else comingSoonResume" routerLink="/resume" routerLinkActive="active" (click)="isMenuOpen = false"><i class="fas fa-file-alt"></i> Resume</a>
+              <a *ngIf="implementedSections.includes('resume'); else comingSoonResume"  (click)="openResume()"><i class="fas fa-file-alt"></i> Resume</a>
               <ng-template #comingSoonResume>
                 <a href="#" (click)="showComingSoon()"><i class="fas fa-file-alt"></i> Resume</a>
               </ng-template>
@@ -75,3 +75,4 @@
     </nav>
     <app-coming-soon-bubble [show]="showComingSoonBubble" [message]="comingSoonMessage"></app-coming-soon-bubble>
 </header>
+<app-resume [visible]="showResumeModal" (close)="closeResumeModal()"></app-resume>

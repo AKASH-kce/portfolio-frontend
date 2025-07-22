@@ -7,11 +7,12 @@ import { ContactPopupComponent } from '../../shared/components/contact-popup.com
 import { Contact } from '../contact/contact.component';
 import { ComingSoonBubbleComponent } from '../../shared/components/coming-soon-bubble.component/coming-soon-bubble.component';
 import { ViewsGraphComponent } from '../views-graph/views-graph.component';
+import { Resume } from '../resume/resume';
 
 @Component({
   selector: 'app-home',
   imports: [
-    SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, Contact, ViewsGraphComponent
+    SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, Contact, ViewsGraphComponent,Resume
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
