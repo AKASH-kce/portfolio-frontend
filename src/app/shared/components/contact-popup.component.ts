@@ -84,7 +84,7 @@ import { CommonModule } from '@angular/common';
             </p>
             <p class="popup-info">
               <a href="https://www.instagram.com/_itz_me_akash_3?igsh=MXV5ZjM4MmlmdTloYQ%3D%3D&utm_source=qr" target="_blank" class="popup-link">
-                <i class="fa-brands fa-instagram"></i> _king_of_haters_33
+                <i class="fa-brands fa-instagram"></i> _itz_me_akash_3
               </a>
             </p>
             <p class="popup-info">
