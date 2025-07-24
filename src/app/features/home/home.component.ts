@@ -12,7 +12,7 @@ import { Resume } from '../resume/resume';
 @Component({
   selector: 'app-home',
   imports: [
-    SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, Contact, ViewsGraphComponent,Resume
+    SkillsComponent, ProfileCardComponent, ProjectsComponent, ExperienceComponent, Contact, ViewsGraphComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
