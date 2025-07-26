@@ -100,7 +100,7 @@ export class AppComponent implements AfterViewInit, OnInit {
       for (let i = 0; i < 18; i++) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
-        const size = Math.random() * 60 + 40; // 40-100px
+        const size = Math.random() * 60 + 40; 
         bubble.style.width = `${size}px`;
         bubble.style.height = `${size}px`;
         bubble.style.left = `${Math.random() * 100}%`;
@@ -130,11 +130,29 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    this.http.get('https://portfolio-backend-docker-isvl.onrender.com/api/contact/Visit').subscribe({
-      next: () => {},
-      error: (err) => { console.error('Visit logging failed', err); }
-    });
+  const isFirstVisit = localStorage.getItem('firstVisit') !== 'true';
+  if (isFirstVisit) {
+    const clickHandler = () => {
+      this.wellComeSound();
+      localStorage.setItem('firstVisit', 'true');
+      window.removeEventListener('click', clickHandler);
+    };
+    window.addEventListener('click', clickHandler);
   }
+
+  this.http.get('https://portfolio-backend-docker-isvl.onrender.com/api/contact/Visit').subscribe({
+    next: () => {},
+    error: (err) => { console.error('Visit logging failed', err); }
+  });
+}
+
+
+wellComeSound(): void {
+  const audio = new Audio('assets/wellcome.mp3');
+  audio.play().catch((error) => {
+    console.warn('AutoPlay blocked', error);
+  });
+}
 
   openContactPopup(coords?: {x: number, y: number}) {
     if (coords) {
