@@ -134,10 +134,11 @@ export class AppComponent implements AfterViewInit, OnInit {
   if (isFirstVisit) {
     const clickHandler = () => {
       this.wellComeSound();
-      // localStorage.setItem('firstVisit', 'true');
       window.removeEventListener('click', clickHandler);
+      window.removeEventListener('touchstart', clickHandler);
     };
     window.addEventListener('click', clickHandler);
+    window.addEventListener('touchstart', clickHandler);
   }
 
   this.http.get('https://portfolio-backend-docker-isvl.onrender.com/api/contact/Visit').subscribe({
