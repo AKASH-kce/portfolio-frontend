@@ -134,7 +134,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   if (isFirstVisit) {
     const clickHandler = () => {
       this.wellComeSound();
-      localStorage.setItem('firstVisit', 'true');
+      // localStorage.setItem('firstVisit', 'true');
       window.removeEventListener('click', clickHandler);
     };
     window.addEventListener('click', clickHandler);
