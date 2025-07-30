@@ -33,7 +33,7 @@ this.isTyping = true;
     const payload = { question: this.userMessage };
     this.userMessage = '';
 
-    this.http.post<any>('https://localhost:7155/api/Chat/ask', payload).subscribe(res => {
+    this.http.post<any>('https://portfolio-backend-docker-isvl.onrender.com/api/Chat/ask', payload).subscribe(res => {
          this.isTyping = false; 
       this.messages.push({ sender: 'bot', text: res.response });
     });
