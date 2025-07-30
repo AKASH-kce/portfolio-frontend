@@ -1,0 +1,32 @@
+<div class="chat-overlay">
+    <div class="chat-window">
+        <div class="chat-header">
+            <h3>Chat Assistant</h3>
+            <button class="close-btn" (click)="closeWindow()">×</button>
+        </div>
+
+        <div class="chat-messages">
+            <div *ngFor="let msg of messages" [ngClass]="msg.sender">
+                <img class="avatar" [src]="msg.sender === 'bot' ? 'portfoliopic.JPG' : 'avatar.jpg'"
+                    alt="{{ msg.sender }} avatar" />
+                <div class="message"
+                    [ngClass]="{ 'bot-message': msg.sender === 'bot', 'user-message': msg.sender === 'user' }">
+                    {{ msg.text }}
+                </div>
+            </div>
+            <div class="message-row bot" *ngIf="isTyping">
+                <img class="avatar" src="portfoliopic.JPG" alt="bot avatar" />
+                <div class="message bot-message typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" [(ngModel)]="userMessage" placeholder="Ask something..." (keyup.enter)="sendMessage()" />
+            <button (click)="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>

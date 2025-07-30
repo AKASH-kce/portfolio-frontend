@@ -8,11 +8,15 @@ import { HttpClient } from '@angular/common/http';
 import { ComingSoonBubbleComponent } from './shared/components/coming-soon-bubble.component/coming-soon-bubble.component';
 import { BubbleService } from './core/services/bubble.service';
 import { MassEmailModalComponent } from '../adminApp/features/mass-email-modal/mass-email-modal.component';
+import { FloatingBotComponent } from './shared/components/chat-bot/chat-bot.component';
+import { ChatWindowComponent } from './shared/components/chat-window/chat-window.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, Footer, ContactBubbleComponent, ContactPopupComponent,ComingSoonBubbleComponent,MassEmailModalComponent],
+  imports: [RouterOutlet,CommonModule,FormsModule, NavbarComponent,FloatingBotComponent,ChatWindowComponent, Footer, ContactBubbleComponent, ContactPopupComponent,ComingSoonBubbleComponent,MassEmailModalComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -33,6 +37,11 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   showBubble = false;
   bubbleMessage = '';
+isChatOpen = false;
+
+openChatWindow() {
+  this.isChatOpen = !this.isChatOpen;
+}
 
   showBubbleWithMessage(message: string) {
     this.bubbleMessage = message;

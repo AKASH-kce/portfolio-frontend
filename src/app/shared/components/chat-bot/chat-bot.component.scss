@@ -1,0 +1,42 @@
+.floating-bot {
+  position: fixed;
+  bottom: 160px;
+  right: 0px;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: floatBot 3s ease-in-out infinite;
+  text-align: center;
+  max-width: 220px;
+}
+
+.floating-bot dotlottie-wc {
+  width: 250px;
+  height: 280px;
+}
+
+.bot-message {
+ background: rgba(174, 72, 167, 0.1);
+  padding: 10px 15px;
+  margin-top: -80px;
+  margin-bottom: 60px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px); 
+  font-size: 14px;
+  font-weight: 500;
+  width: 200px;
+  line-height: 1.4;
+
+}
+
+@keyframes floatBot {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+}
