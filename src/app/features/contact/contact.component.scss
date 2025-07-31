@@ -55,7 +55,7 @@ input, textarea {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 0;
-  background: linear-gradient(135deg, #232526 0%, #302b63 100%);
+  background: var(--card-bg);
   border-radius: 18px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
 }
