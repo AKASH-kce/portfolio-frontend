@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component,Input, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-contact-bubble',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="contact-bubble" (click)="openPopup($event)" (mouseenter)="hovering = true" (mouseleave)="hovering = false">
+    <div class="contact-bubble" (click)="openPopup($event)" (mouseenter)="hovering = true" (mouseleave)="hovering = false" *ngIf="isShowBubble">
       <span class="bubble-icons">
         <i *ngIf="!hovering" class="fa-regular fa-hand-point-right hand-animate" aria-label="Click here"></i>
         <i *ngIf="hovering" class="fa-regular fa-hand-wave hand-animate" aria-label="Wave"></i>
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ContactBubbleComponent {
   @Output() showPopup = new EventEmitter<{x: number, y: number}>();
+  @Input() isShowBubble: boolean | undefined;
   hovering = false;
 
   openPopup(event: MouseEvent) {

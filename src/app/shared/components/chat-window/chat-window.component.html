@@ -5,7 +5,7 @@
             <button class="close-btn" (click)="closeWindow()">×</button>
         </div>
 
-        <div class="chat-messages">
+        <div class="chat-messages" #chatMessages>
             <div *ngFor="let msg of messages" [ngClass]="msg.sender">
                 <img class="avatar" [src]="msg.sender === 'bot' ? 'portfoliopic.JPG' : 'avatar.jpg'"
                     alt="{{ msg.sender }} avatar" />
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="chat-input">
+        <div class="chat-input" (click)="scrollToBottom()">
             <input type="text" [(ngModel)]="userMessage" placeholder="Ask something..." (keyup.enter)="sendMessage()" />
             <button (click)="sendMessage()">Send</button>
         </div>

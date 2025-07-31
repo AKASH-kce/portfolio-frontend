@@ -1,8 +1,8 @@
 <div class="bubble-bg"></div>
 <div id="particles-js"></div>
- <app-floating-bot (botClicked)="openChatWindow()"></app-floating-bot>
+ <app-floating-bot (botClicked)="openChatWindow()" [isShowBotBubble]="isShowBotBubble"></app-floating-bot>
     <app-chat-window *ngIf="isChatOpen" (close)="openChatWindow()"></app-chat-window>
-<app-contact-bubble (showPopup)="openContactPopup($event)"></app-contact-bubble>
+<app-contact-bubble (showPopup)="openContactPopup($event)" [isShowBubble]="isShowBubble"></app-contact-bubble>
 <app-contact-popup [open]="showContactPopup" [startX]="popupStartX" [startY]="popupStartY" (close)="closeContactPopup()"></app-contact-popup>
 <div class="container">
     <app-navbar></app-navbar>

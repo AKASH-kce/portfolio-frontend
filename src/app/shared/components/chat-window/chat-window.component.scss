@@ -29,6 +29,7 @@
 }
 
 .chat-header {
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,6 +71,7 @@
 .user {
   text-align: right;
 }
+
 .user-message {
   background: linear-gradient(45deg, #3f7e2c, #dc5050);
   color: white;
@@ -114,6 +116,7 @@
     }
   }
 }
+
 .message-row {
   display: flex;
   align-items: flex-start;
@@ -144,7 +147,7 @@
   display: flex;
   align-items: center;
   height: 20px;
-  
+
   span {
     width: 8px;
     height: 8px;
@@ -153,11 +156,11 @@
     display: inline-block;
     margin: 0 3px;
     animation: bounce 1.3s infinite ease-in-out both;
-    
+
     &:nth-child(1) {
       animation-delay: -0.32s;
     }
-    
+
     &:nth-child(2) {
       animation-delay: -0.16s;
     }
@@ -165,9 +168,13 @@
 }
 
 @keyframes bounce {
-  0%, 80%, 100% {
+
+  0%,
+  80%,
+  100% {
     transform: scale(0.5);
-  } 
+  }
+
   40% {
     transform: scale(1);
   }
@@ -177,4 +184,17 @@
   background: transparent;
   border: none;
   padding: 0;
+}
+
+.chat-wrapper {
+  width: 95%;
+  max-width: 1000px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }

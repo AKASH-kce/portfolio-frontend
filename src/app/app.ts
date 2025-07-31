@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,FormsModule, NavbarComponent,FloatingBotComponent,ChatWindowComponent, Footer, ContactBubbleComponent, ContactPopupComponent,ComingSoonBubbleComponent,MassEmailModalComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, NavbarComponent, FloatingBotComponent, ChatWindowComponent, Footer, ContactBubbleComponent, ContactPopupComponent, ComingSoonBubbleComponent, MassEmailModalComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -34,14 +34,15 @@ export class AppComponent implements AfterViewInit, OnInit {
   showContactPopup = false;
   popupStartX = 0;
   popupStartY = 0;
-
+  isShowBubble: boolean = true;
+  isShowBotBubble: boolean = true;
   showBubble = false;
   bubbleMessage = '';
-isChatOpen = false;
+  isChatOpen = false;
 
-openChatWindow() {
-  this.isChatOpen = !this.isChatOpen;
-}
+  openChatWindow() {
+    this.isChatOpen = !this.isChatOpen;
+  }
 
   showBubbleWithMessage(message: string) {
     this.bubbleMessage = message;
@@ -109,7 +110,7 @@ openChatWindow() {
       for (let i = 0; i < 18; i++) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
-        const size = Math.random() * 60 + 40; 
+        const size = Math.random() * 60 + 40;
         bubble.style.width = `${size}px`;
         bubble.style.height = `${size}px`;
         bubble.style.left = `${Math.random() * 100}%`;
@@ -139,32 +140,34 @@ openChatWindow() {
   }
 
   ngOnInit() {
-  const isFirstVisit = localStorage.getItem('firstVisit') !== 'true';
-  if (isFirstVisit) {
-    const clickHandler = () => {
-      this.wellComeSound();
-      window.removeEventListener('click', clickHandler);
-      window.removeEventListener('touchstart', clickHandler);
-    };
-    window.addEventListener('click', clickHandler);
-    window.addEventListener('touchstart', clickHandler);
+    const isFirstVisit = localStorage.getItem('firstVisit') !== 'true';
+    if (isFirstVisit) {
+      const clickHandler = () => {
+        this.wellComeSound();
+        window.removeEventListener('click', clickHandler);
+        window.removeEventListener('touchstart', clickHandler);
+      };
+      window.addEventListener('click', clickHandler);
+      window.addEventListener('touchstart', clickHandler);
+    }
+
+    this.http.get('https://portfolio-backend-docker-isvl.onrender.com/api/contact/Visit').subscribe({
+      next: () => { },
+      error: (err) => { console.error('Visit logging failed', err); }
+    });
   }
 
-  this.http.get('https://portfolio-backend-docker-isvl.onrender.com/api/contact/Visit').subscribe({
-    next: () => {},
-    error: (err) => { console.error('Visit logging failed', err); }
-  });
-}
 
+  wellComeSound(): void {
+    const audio = new Audio('assets/wellcome.mp3');
+    audio.play().catch((error) => {
+      console.warn('AutoPlay blocked', error);
+    });
+  }
 
-wellComeSound(): void {
-  const audio = new Audio('assets/wellcome.mp3');
-  audio.play().catch((error) => {
-    console.warn('AutoPlay blocked', error);
-  });
-}
-
-  openContactPopup(coords?: {x: number, y: number}) {
+  openContactPopup(coords?: { x: number, y: number }) {
+    this.isShowBubble = false;
+    this.isShowBotBubble = false;
     if (coords) {
       // Calculate the center of the popup
       const popupWidth = 340;
@@ -183,6 +186,8 @@ wellComeSound(): void {
   }
 
   closeContactPopup() {
+    this.isShowBubble = true;
+    this.isShowBotBubble = true;
     this.showContactPopup = false;
   }
 }

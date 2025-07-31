@@ -1,6 +1,6 @@
 .floating-bot {
   position: fixed;
-  bottom: 160px;
+  bottom: 0px;
   right: 0px;
   cursor: pointer;
   z-index: 9999;
@@ -13,21 +13,22 @@
 }
 
 .floating-bot dotlottie-wc {
-  width: 250px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 23px;
 }
 
 .bot-message {
  background: rgba(174, 72, 167, 0.1);
-  padding: 10px 15px;
+  padding: 7px 12px;
   margin-top: -80px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(15px); 
   font-size: 14px;
   font-weight: 500;
-  width: 200px;
+  width: 170px;
   line-height: 1.4;
 
 }

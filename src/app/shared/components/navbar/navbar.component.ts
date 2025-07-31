@@ -61,11 +61,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     
     // Hide/show contact bubble based on menu state
     const contactBubble = document.querySelector('.contact-bubble') as HTMLElement;
+    const robotBotBubble=document.querySelector('.floating-bot') as HTMLElement;
     if (contactBubble) {
       if (this.isMenuOpen) {
         contactBubble.style.display = 'none';
+        robotBotBubble.style.display='none';
       } else {
         contactBubble.style.display = 'flex';
+        robotBotBubble.style.display='flex';
       }
     }
   }
