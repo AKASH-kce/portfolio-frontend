@@ -13,19 +13,27 @@ import { GithubService } from '../../core/services/github.service';
 export class ProjectsComponent implements OnInit {
   projects: any[] = [];
 
-  constructor(private githubService: GithubService) {}
+  constructor(private githubService: GithubService) { }
 
   ngOnInit() {
-    this.githubService.getRepos('AKASH-kce').subscribe((repos: any[]) => {
-      this.projects = repos.map(repo => ({
-        title: repo.name,
-        description: repo.description,
-        image: repo.owner?.avatar_url || 'assets/default-project.png',
-        codeUrl: repo.html_url,
-        demoUrl: repo.homepage || '',
-        tags: repo.topics && repo.topics.length ? repo.topics : (repo.language ? [repo.language] : []),
-        icon: 'fa-github'
-      }));
-    });
+    const usernames = ['AKASH-kce', 'AKASH-SETTUKANNU']
+    const allRepos: any[] = [];
+    usernames.forEach((username, index) => {
+      this.githubService.getRepos(username).subscribe((repos: any[]) => {
+        this.projects = repos.map(repo => ({
+          title: repo.name,
+          description: repo.description,
+          image: repo.owner?.avatar_url || 'assets/default-project.png',
+          codeUrl: repo.html_url,
+          demoUrl: repo.homepage || '',
+          tags: repo.topics && repo.topics.length ? repo.topics : (repo.language ? [repo.language] : []),
+          icon: 'fa-github'
+        }));
+        allRepos.push(...this.projects);
+        if (index === usernames.length - 1) {
+          this.projects = allRepos;
+        }
+      });
+    })
   }
 }
