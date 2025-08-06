@@ -33,3 +33,8 @@
 .floating-text {
   animation: float 3s ease-in-out infinite;
 }
+@media (max-width: 600px) {
+  .chart {
+    width: 330px;
+  }
+}
