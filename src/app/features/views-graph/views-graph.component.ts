@@ -16,36 +16,6 @@ export class ViewsGraphComponent implements OnInit {
   stateChartOptions: any = {};
   loading = true;
 
-  sampleStats = [
-    {
-      Date: '2024-07-20',
-      Count: 10,
-      States: [
-        { State: 'California', Count: 4 },
-        { State: 'Texas', Count: 3 },
-        { State: 'Maharashtra', Count: 3 }
-      ],
-      Countries: [
-        { Country: 'USA', Count: 7 },
-        { Country: 'India', Count: 3 }
-      ]
-    },
-    {
-      Date: '2024-07-21',
-      Count: 8,
-      States: [
-        { State: 'New York', Count: 2 },
-        { State: 'Kerala', Count: 2 },
-        { State: 'Bavaria', Count: 4 }
-      ],
-      Countries: [
-        { Country: 'USA', Count: 2 },
-        { Country: 'India', Count: 2 },
-        { Country: 'Germany', Count: 4 }
-      ]
-    }
-  ];
-
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -64,15 +34,12 @@ export class ViewsGraphComponent implements OnInit {
               Count: s.count
             })) || []
           }));
-          this.visitStats = [...this.sampleStats, ...normalizedStats];
-        } else {
-          this.visitStats = this.sampleStats;
-        }
+          this.visitStats =normalizedStats;
+        } 
         this.setupCharts();
         this.loading = false;
       },
       error: () => {
-        this.visitStats = this.sampleStats;
         this.setupCharts();
         this.loading = false;
       }
@@ -151,31 +118,64 @@ export class ViewsGraphComponent implements OnInit {
           }
         }
       ],
-      media: [
+    media: [
+  {
+    query: {
+      maxWidth: 600
+    },
+    option: {
+      title: [
         {
-          query: {
-            maxWidth: 600
+          text: '📊 Portfolio Visits by State',
+          subtext: 'Top states visiting my portfolio',
+          left: 'center',
+          top: 10,
+          textStyle: {
+            color: '#8a2be2',
+            fontSize: 20,
+            fontWeight: 'bold',
+            fontFamily: 'Montserrat, Arial, sans-serif'
           },
-          option: {
-            legend: {
-              orient: 'horizontal',
-              left: 'center',
-              bottom: 10,
-              itemGap: 10,
-              textStyle: {
-                fontSize: 12
-              }
-            },
-            series: [
-              {
-                radius: '50%',
-                top: '10%',
-                bottom: '20%'
-              }
-            ]
+          subtextStyle: {
+            color: '#b2f5ea',
+            fontSize: 14
+          }
+        },
+        {
+         text: '👇 Click on legend to disable states for better view',
+          left: 'center',
+          top: 70,
+          textStyle: {
+            color: '#facc15',
+            fontSize: 13,
+            fontWeight: 'normal'
           }
         }
+      ],
+      legend: {
+        type: 'scroll',
+        orient: 'horizontal',
+        left: 'center',
+        top: 100,
+        bottom: 10,
+        itemGap: 10,
+        textStyle: {
+          color: '#be395cff',
+          fontSize: 15,
+          fontWeight: 'bold'
+        }
+      },
+      series: [
+        {
+          radius: '50%',
+          top: '35%',
+          bottom: '0%'
+        }
       ]
+    }
+  }
+]
+
 
     });
 
