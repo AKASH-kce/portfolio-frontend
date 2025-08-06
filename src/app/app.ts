@@ -155,8 +155,20 @@ export class AppComponent implements AfterViewInit, OnInit {
       next: () => { },
       error: (err) => { console.error('Visit logging failed', err); }
     });
+    this.autoHideAndCycleContactBubble();
   }
+  autoHideAndCycleContactBubble() {
+    setTimeout(() => {
+      this.isShowBubble = false;
+      setInterval(() => {
+        this.isShowBubble = true;
+        setTimeout(() => {
+          this.isShowBubble = false;
+        }, 5000);
 
+      }, 6000);
+    }, 3000);
+  }
 
   wellComeSound(): void {
     const audio = new Audio('assets/wellcome.mp3');
