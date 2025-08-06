@@ -166,7 +166,7 @@ export class AppComponent implements AfterViewInit, OnInit {
           this.isShowBubble = false;
         }, 5000);
 
-      }, 6000);
+      }, 10000);
     }, 3000);
   }
 
