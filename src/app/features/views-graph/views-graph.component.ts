@@ -34,8 +34,8 @@ export class ViewsGraphComponent implements OnInit {
               Count: s.count
             })) || []
           }));
-          this.visitStats =normalizedStats;
-        } 
+          this.visitStats = normalizedStats;
+        }
         this.setupCharts();
         this.loading = false;
       },
@@ -117,81 +117,137 @@ export class ViewsGraphComponent implements OnInit {
             }
           }
         }
-      ],
-    media: [
-  {
-    query: {
-      maxWidth: 600
-    },
-    option: {
-      title: [
-        {
-          text: '📊 Portfolio Visits by State',
-          subtext: 'Top states visiting my portfolio',
-          left: 'center',
-          top: 10,
-          textStyle: {
-            color: '#8a2be2',
-            fontSize: 20,
-            fontWeight: 'bold',
-            fontFamily: 'Montserrat, Arial, sans-serif'
-          },
-          subtextStyle: {
-            color: '#b2f5ea',
-            fontSize: 14
-          }
-        },
-        {
-         text: '👇 Click on legend to disable states for better view',
-          left: 'center',
-          top: 70,
-          textStyle: {
-            color: '#facc15',
-            fontSize: 13,
-            fontWeight: 'normal'
-          }
-        }
-      ],
-      legend: {
-        type: 'scroll',
-        orient: 'horizontal',
-        left: 'center',
-        top: 100,
-        bottom: 10,
-        itemGap: 10,
-        textStyle: {
-          color: '#be395cff',
-          fontSize: 15,
-          fontWeight: 'bold'
-        }
-      },
-      series: [
-        {
-          radius: '50%',
-          top: '35%',
-          bottom: '0%'
-        }
       ]
-    }
-  }
-]
-
-
     });
 
-
-    this.countryChartOptions = pieChartBase(
+    const countryOptions = pieChartBase(
       '🌍 Portfolio Visits by Country',
       'Top countries visiting my portfolio',
       'Visits by Country',
       countryData
     );
 
-    this.stateChartOptions = pieChartBase(
+    const stateOptions = pieChartBase(
       '📊 Portfolio Visits by State',
       'Top states visiting my portfolio',
       'Visits by State',
       stateData
     );
+
+    this.countryChartOptions = {
+      ...countryOptions,
+      media: [
+        {
+          query: { maxWidth: 600 },
+          option: {
+            title: [
+              {
+                subtext: 'Top country visiting my portfolio',
+                left: 'center',
+                top: 10,
+                textStyle: {
+                  color: '#8a2be2',
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                  fontFamily: 'Montserrat, Arial, sans-serif'
+                },
+                subtextStyle: {
+                  color: '#b2f5ea',
+                  fontSize: 14
+                }
+              },
+              {
+                text: '👇 Click on legend to disable country for better view',
+                left: 'center',
+                top: 70,
+                textStyle: {
+                  color: '#facc15',
+                  fontSize: 13,
+                  fontWeight: 'normal'
+                }
+              }
+            ],
+            legend: {
+              type: 'scroll',
+              orient: 'horizontal',
+              left: 'center',
+              top: 100,
+              bottom: 10,
+              itemGap: 10,
+              textStyle: {
+                color: '#be395cff',
+                fontSize: 15,
+                fontWeight: 'bold'
+              }
+            },
+            series: [
+              {
+                radius: '50%',
+                top: '35%',
+                bottom: '0%'
+              }
+            ]
+          }
+        }
+      ]
+    };
+
+    this.stateChartOptions = {
+      ...stateOptions,
+      media: [
+        {
+          query: { maxWidth: 600 },
+          option: {
+            title: [
+              {
+                subtext: 'Top states visiting my portfolio',
+                left: 'center',
+                top: 10,
+                textStyle: {
+                  color: '#8a2be2',
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                  fontFamily: 'Montserrat, Arial, sans-serif'
+                },
+                subtextStyle: {
+                  color: '#b2f5ea',
+                  fontSize: 14
+                }
+              },
+              {
+                text: '👇 Click on legend to disable states for better view',
+                left: 'center',
+                top: 70,
+                textStyle: {
+                  color: '#facc15',
+                  fontSize: 13,
+                  fontWeight: 'normal'
+                }
+              }
+            ],
+            legend: {
+              type: 'scroll',
+              orient: 'horizontal',
+              left: 'center',
+              top: 100,
+              bottom: 10,
+              itemGap: 10,
+              textStyle: {
+                color: '#be395cff',
+                fontSize: 15,
+                fontWeight: 'bold'
+              }
+            },
+            series: [
+              {
+                radius: '50%',
+                top: '35%',
+                bottom: '0%'
+              }
+            ]
+          }
+        }
+      ]
+    };
   }
 }
