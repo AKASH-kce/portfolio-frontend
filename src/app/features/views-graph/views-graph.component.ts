@@ -18,33 +18,74 @@ export class ViewsGraphComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit() {
-    this.http.get<any[]>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/VisitStats').subscribe({
-      next: stats => {
-        if (Array.isArray(stats) && stats.length > 0) {
-          const normalizedStats = stats.map(stat => ({
-            Date: stat.date,
-            Count: stat.count,
-            Countries: stat.countries?.map((c: { country: any; count: any; }) => ({
-              Country: c.country,
-              Count: c.count
-            })) || [],
-            States: stat.states?.map((s: { state: any; count: any; }) => ({
-              State: s.state,
-              Count: s.count
-            })) || []
-          }));
-          this.visitStats = normalizedStats;
-        }
-        this.setupCharts();
-        this.loading = false;
-      },
-      error: () => {
-        this.setupCharts();
-        this.loading = false;
+ngOnInit() {
+  this.http.get<any[]>('https://portfolio-backend-docker-isvl.onrender.com/api/contact/VisitStats').subscribe({
+    next: stats => {
+      let normalizedStats: any[] = [];
+
+      if (Array.isArray(stats) && stats.length > 0) {
+        normalizedStats = stats.map(stat => ({
+          Date: stat.date,
+          Count: stat.count,
+          Countries: stat.countries?.map((c: { country: any; count: any; }) => ({
+            Country: c.country,
+            Count: c.count
+          })) || [],
+          States: stat.states?.map((s: { state: any; count: any; }) => ({
+            State: s.state,
+            Count: s.count
+          })) || []
+        }));
       }
-    });
-  }
+
+      // ✅ Add sample data
+      const sampleData = {
+        Date: new Date().toISOString(),
+        Count: 50,
+        Countries: [
+          { Country: "India", Count: 20 },
+          { Country: "USA", Count: 15 },
+          { Country: "Germany", Count: 10 },
+          { Country: "Japan", Count: 5 }
+        ],
+        States: [
+          { State: "Kerala", Count: 12 },
+          { State: "California", Count: 8 },
+          { State: "Bavaria", Count: 6 },
+          { State: "Tokyo", Count: 4 }
+        ]
+      };
+
+      // merge original + sample
+      this.visitStats = [...normalizedStats, sampleData];
+
+      this.setupCharts();
+      this.loading = false;
+    },
+    error: () => {
+      // fallback only with sample data
+      this.visitStats = [{
+        Date: new Date().toISOString(),
+        Count: 50,
+        Countries: [
+          { Country: "India", Count: 20 },
+          { Country: "USA", Count: 15 },
+          { Country: "Germany", Count: 10 },
+          { Country: "Japan", Count: 5 }
+        ],
+        States: [
+          { State: "Kerala", Count: 12 },
+          { State: "California", Count: 8 },
+          { State: "Bavaria", Count: 6 },
+          { State: "Tokyo", Count: 4 }
+        ]
+      }];
+      this.setupCharts();
+      this.loading = false;
+    }
+  });
+}
+
 
   setupCharts() {
     const countryMap: { [key: string]: number } = {};
