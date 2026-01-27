@@ -35,7 +35,6 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage() {
-    console.log(document.documentElement.outerHTML)
     if (!this.userMessage.trim()) return;
 
     this.messages.push({ sender: 'user', text: this.userMessage });
@@ -43,7 +42,7 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
     const payload = { question: this.userMessage };
     this.userMessage = '';
     this.scrollToBottom();
-    this.http.post<any>('https://portfolio-backend-docker-isvl.onrender.com/api/Chat/ask', payload).subscribe(res => {
+    this.http.post<any>('https://akash-chatbot-python.onrender.com', payload).subscribe(res => {
       this.isTyping = false;
       this.scrollToBottom();
       this.messages.push({ sender: 'bot', text: res.response });
