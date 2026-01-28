@@ -42,7 +42,7 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
     const payload = { question: this.userMessage };
     this.userMessage = '';
     this.scrollToBottom();
-    this.http.post<any>('POST https://akash-chatbot-python.onrender.com/chat/ask', payload).subscribe(res => {
+    this.http.post<any>('https://akash-chatbot-python.onrender.com/chat/ask', payload).subscribe(res => {
       this.isTyping = false;
       this.scrollToBottom();
       this.messages.push({ sender: 'bot', text: res.response });
