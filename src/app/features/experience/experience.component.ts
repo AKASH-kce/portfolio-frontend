@@ -31,7 +31,7 @@ export class ExperienceComponent implements AfterViewInit {
       title: "Program Analyst Trainee",
       company: "Cognizant, India",
       description:
-        "Full-time position, architecting modular UiPath and Python/AI workflows, delivering technical training on enterprise automation and cloud AI frameworks. Hands-on with GCP services, Python-based Generative AI pipelines, embeddings, and training workflows.",
+        "Full-time developer role, architecting modular UiPath and Python/AI workflows. Working with GCP services and building Python-based Generative AI pipelines, including embeddings and training workflows.",
       link: "https://www.cognizant.com/",
     },
   ];
