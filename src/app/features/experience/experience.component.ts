@@ -28,7 +28,7 @@ export class ExperienceComponent implements AfterViewInit {
     },
     {
       date: "2025-November <-> Present",
-      title: "Program Analyst Trainee",
+      title: "Developer Trainee",
       company: "Cognizant, India",
       description:
         "Full-time developer role, architecting modular UiPath and Python/AI workflows. Working with GCP services and building Python-based Generative AI pipelines, including embeddings and training workflows.",
